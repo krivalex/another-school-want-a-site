@@ -8,32 +8,31 @@ import {
   updateDoc
 } from 'firebase/firestore'
 import { db } from '@/firebase-config'
-import { ref, computed } from 'vue'
+import { ref, reactive } from 'vue'
 import { useUser } from './useUser'
 import * as firebase from 'firebase/storage'
 import { getStorage, uploadBytes } from 'firebase/storage'
+import type { Course } from '@/interfaces'
+import { initNewCourse } from '@/logics'
 
-const course = ref()
+const course = ref<Course | DocumentData>()
+const selectedCourse = ref<Course>()
 const courseList = ref([] as DocumentData)
+const visibleAddModal = ref(false)
 
-const newCourse = ref({
-  id: Date.now().toString(),
-  author: '' as any,
-  image: '' as any
+const newCourse = ref<Course>(initNewCourse)
+
+const loading = reactive({
+  course: false,
+  courseList: false,
+  newCourse: false
 })
 
-export const useContent = () => {
+export const useCourse = () => {
   const yourDatabase = 'courses'
 
-  const loading = ref({
-    course: false,
-    courseList: false,
-    newCourse: false
-  })
-
   async function getAllContent() {
-    loading.value.courseList = true
-    courseList.value.length = 0
+    loading.courseList = true
     try {
       const querySnapshot = await getDocs(collection(db, yourDatabase))
       querySnapshot.forEach((doc) => {
@@ -43,18 +42,18 @@ export const useContent = () => {
         }
         courseList.value.push(compressive)
       })
-      loading.value.courseList = false
+      loading.courseList = false
     } catch (error) {
       console.error(error)
     }
   }
 
   async function getContentById(id: string) {
-    loading.value.course = true
+    loading.course = true
     try {
       const querySnapshot = await getDocs(collection(db, yourDatabase))
       course.value = querySnapshot.docs.map((doc) => doc.data()).find((item: any) => item.id === id)
-      loading.value.course = false
+      loading.course = false
     } catch (error) {
       console.error(error)
     }
@@ -62,12 +61,12 @@ export const useContent = () => {
 
   async function addContent() {
     const { userToObject } = useUser()
-    loading.value.newCourse = true
+    loading.newCourse = true
     try {
       if (newCourse.value && userToObject.value) {
         newCourse.value.author = userToObject.value
         await addDoc(collection(db, yourDatabase), newCourse.value)
-        loading.value.newCourse = false
+        loading.newCourse = false
       }
     } catch (error) {
       console.error(error)
@@ -75,21 +74,18 @@ export const useContent = () => {
   }
 
   async function deleteDocById(firebaseId: string) {
-    loading.value.course = true
+    loading.course = true
     try {
       await deleteDoc(doc(db, yourDatabase, firebaseId))
-      loading.value.course = false
+      loading.course = false
     } catch (error) {
       console.error(error)
     }
   }
 
   async function uploadImage(file: any) {
-    console.log(file)
     const storage = getStorage()
-    console.log(storage)
-    const storageRef = firebase.ref(storage, 'hobbies/' + file.name)
-    console.log(storageRef)
+    const storageRef = firebase.ref(storage, 'courses/' + file.name)
 
     uploadBytes(storageRef, file)
       .then(() => {
@@ -113,15 +109,28 @@ export const useContent = () => {
     await getAllContent()
   }
 
+  function clearContent() {
+    newCourse.value = initNewCourse
+    visibleAddModal.value = false
+  }
+
+  const toggleVisibleAddCourse = () => {
+    visibleAddModal.value = !visibleAddModal.value
+  }
+
   return {
     course,
     courseList,
     loading,
     newCourse,
+    visibleAddModal,
+    toggleVisibleAddCourse,
     getAllContent,
     getContentById,
     addContent,
     deleteDocById,
-    load
+    load,
+    uploadImage,
+    clearContent
   }
 }

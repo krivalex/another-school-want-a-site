@@ -10,8 +10,9 @@ import {
 import { db } from '@/firebase-config'
 import { ref, computed, reactive } from 'vue'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import type { User } from '@/interfaces'
 
-const user = ref()
+const user = ref<User | DocumentData | null>()
 const userList = ref([] as DocumentData)
 
 const loading = reactive({
@@ -19,7 +20,7 @@ const loading = reactive({
   userList: false
 })
 
-const userToObject = computed(() => {
+const userToObject = computed((): User | null => {
   if (user.value) {
     return {
       uid: user.value.uid,
@@ -27,8 +28,7 @@ const userToObject = computed(() => {
       displayName: user.value.displayName,
       photoURL: user.value.photoURL,
       favourites: user.value.favourites ?? [],
-      status: user.value.status ?? 'user',
-      reviews: user.value.reviews ?? []
+      status: user.value.status ?? 'client'
     }
   }
   return null
