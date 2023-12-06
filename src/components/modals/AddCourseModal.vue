@@ -12,30 +12,50 @@
         <label for="description">Длительность курса(дней)</label>
         <p-input-text id="description" type="text" v-model="newCourse.duration" />
       </div>
-      <!-- <div class="p-field">
-        <label for="description">Возраст учеников</label>
-        <p-slider id="description" type="text" range v-model="newCourse.age" />
-      </div> -->
       <div class="p-field">
-        <label for="description">Описание курса</label>
-        <p-editor id="description" v-model="newCourse.description" />
+        <label for="description">Возраст учеников</label>
+        <div class="two-at-one">
+          <p-input-number id="description" type="text" v-model="newCourse.age.start" />
+          <p-input-number id="description" type="text" v-model="newCourse.age.end" />
+        </div>
+      </div>
+      <div class="p-field short-description">
+        <label for="shortDescription">Короткое описание курса</label>
+        <p-editor id="shortDescription" v-model="newCourse.shortDescription" />
+      </div>
+      <div class="p-field long-description">
+        <label for="longDescription">Длинное описание курса</label>
+        <p-editor id="longDescription" v-model="newCourse.longDescription" />
       </div>
       <div class="p-field">
-        <label for="description">Список учителей</label>
-        <p-dropdown
-          id="description"
-          v-model="newCourse.teachers"
-          :options="[
-            { label: 'Учитель 1', value: '1' },
-            { label: 'Учитель 2', value: '2' },
-            { label: 'Учитель 3', value: '3' }
-          ]"
-          multiple
-        />
+        <label for="teachers">Список учителей</label>
+      </div>
+      <div class="p-field">
+        <form class="input__wrapper" enctype="multipart/form-data">
+          <input
+            id="inputfile"
+            class="input inputfile"
+            name="images"
+            type="file"
+            accept=".jpg, .png"
+            @input="onUpload($event)"
+          />
+          <label for="inputfile" class="inputfile-button">
+            <span class="input__file-icon-wrapper">
+              <img
+                class="input__file-icon"
+                src="@/assets/upload-image.png"
+                alt="Выбрать файл"
+                width="25"
+              />
+            </span>
+            <span class="input__file-button-text"> Загрузи картинку</span>
+          </label>
+        </form>
       </div>
     </div>
     <template #footer>
-      <div class="p-d-flex p-jc-between">
+      <div class="buttons-container">
         <p-button class="p-button p-button-danger" @click="clearContent" label="Отмена"></p-button>
         <p-button class="p-button p-button-success" @click="addContent" label="Создать"></p-button>
       </div>
@@ -51,16 +71,43 @@ import PButton from 'primevue/button'
 import PInputText from 'primevue/inputtext'
 import PSlider from 'primevue/slider'
 import PDropdown from 'primevue/dropdown'
+import PInputNumber from 'primevue/inputnumber'
 
-const { addContent, visibleAddModal, newCourse, clearContent } = useCourse()
+const { addContent, visibleAddModal, newCourse, clearContent, uploadImage } = useCourse()
+
+async function onUpload(e: any) {
+  const image = e.target.files[0]
+  await uploadImage(image)
+}
 </script>
 
 <style scoped>
+.two-at-one {
+  display: flex;
+  justify-content: space-between;
+}
+.input__wrapper {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+}
+.inputfile {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
 :deep(.p-dialog) {
   width: 80vw;
   height: 80vh;
 }
-.p-editor-container {
+.short-description .p-editor-container {
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+.long-description .p-editor-container {
   height: 400px;
 }
 
@@ -77,5 +124,16 @@ const { addContent, visibleAddModal, newCourse, clearContent } = useCourse()
 
 .p-field label {
   font-size: 1.2rem;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.1rem;
+
+  .p-button {
+    width: 150px;
+    margin: 10px 10px;
+  }
 }
 </style>

@@ -8,6 +8,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path: '/course/:id',
+      name: 'course',
+      component: () => import('@/views/CourseView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/views/NotFoundView.vue')
     }
   ]
 })

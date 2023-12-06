@@ -4,11 +4,15 @@ export interface Course {
   image: string
   created: Date
   title: string
-  description: string
+  longDescription: string
+  shortDescription: string
   duration: string
   teachers: []
   teachearsDesc: string
-  age: number[] | string
+  age: {
+    start: number
+    end: number
+  }
 }
 
 export interface User {

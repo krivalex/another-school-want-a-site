@@ -6,9 +6,13 @@ export const initNewCourse: Course = {
   image: '',
   created: new Date(),
   title: '',
-  description: '',
+  shortDescription: '',
+  longDescription: '',
   duration: '',
   teachers: [],
   teachearsDesc: '',
-  age: ''
+  age: {
+    start: 0,
+    end: 0
+  }
 }
