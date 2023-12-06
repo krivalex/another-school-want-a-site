@@ -60,11 +60,10 @@ export const useCourse = () => {
   }
 
   async function addContent() {
-    const { userToObject } = useUser()
+    // const { userToObject } = useUser()
     loading.newCourse = true
     try {
-      if (newCourse.value && userToObject.value) {
-        newCourse.value.author = userToObject.value
+      if (newCourse.value) {
         await addDoc(collection(db, yourDatabase), newCourse.value)
         loading.newCourse = false
       }

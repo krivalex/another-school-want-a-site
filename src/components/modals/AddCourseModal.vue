@@ -12,10 +12,10 @@
         <label for="description">Длительность курса(дней)</label>
         <p-input-text id="description" type="text" v-model="newCourse.duration" />
       </div>
-      <div class="p-field">
+      <!-- <div class="p-field">
         <label for="description">Возраст учеников</label>
         <p-slider id="description" type="text" range v-model="newCourse.age" />
-      </div>
+      </div> -->
       <div class="p-field">
         <label for="description">Описание курса</label>
         <p-editor id="description" v-model="newCourse.description" />
@@ -54,3 +54,28 @@ import PDropdown from 'primevue/dropdown'
 
 const { addContent, visibleAddModal, newCourse, clearContent } = useCourse()
 </script>
+
+<style scoped>
+:deep(.p-dialog) {
+  width: 80vw;
+  height: 80vh;
+}
+.p-editor-container {
+  height: 400px;
+}
+
+.p-fluid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.p-field {
+  margin-bottom: 1rem;
+}
+
+.p-field label {
+  font-size: 1.2rem;
+}
+</style>
