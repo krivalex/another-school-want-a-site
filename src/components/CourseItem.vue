@@ -1,6 +1,6 @@
 <template>
-  <div class="course-card" @click="goToCoursePage(item.id)">
-    <p-card>
+  <div @click="goToCoursePage(item.id)">
+    <p-card class="course-card">
       <template #header>
         <img :src="item.image" alt="Картинка курса" class="course-preview" />
       </template>
@@ -45,6 +45,7 @@ defineProps({
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .date-info {
