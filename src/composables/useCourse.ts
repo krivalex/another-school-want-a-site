@@ -33,6 +33,7 @@ export const useCourse = () => {
 
   async function getAllContent() {
     loading.courseList = true
+    courseList.value = []
     try {
       const querySnapshot = await getDocs(collection(db, yourDatabase))
       querySnapshot.forEach((doc) => {
