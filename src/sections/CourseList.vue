@@ -6,7 +6,7 @@
 
     <p-carousel
       :value="courseList"
-      :numVisible="3"
+      :numVisible="1"
       :numScroll="1"
       :responsiveOptions="responsiveOptions"
       circular
@@ -66,9 +66,5 @@ onMounted(async () => {
 
 :deep(.p-carousel-indicator) {
   margin-right: 15px;
-}
-
-:deep(.p-carousel-items-content) {
-  width: 100vw;
 }
 </style>

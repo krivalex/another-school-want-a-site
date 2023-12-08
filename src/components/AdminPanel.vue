@@ -13,6 +13,7 @@
           class="p-button-sm"
         />
         <p-button label="Добавить преподавателя" icon="pi pi-user-plus" class="p-button-sm" />
+        <p-button label="Посмотреть заявки" icon="pi pi-eye" class="p-button-sm" />
       </div>
     </template>
   </p-toolbar>

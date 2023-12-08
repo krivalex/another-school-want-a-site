@@ -12,9 +12,14 @@
         <div v-html="item.shortDescription"></div>
       </template>
       <template #footer>
-        <span class="date-info">
-          {{ dateFormmatter(item.created) }}
-        </span>
+        <span class="date-info">{{ dateFormmatter(item.created) }}</span>
+        <span class="duration">{{ item.duration }}</span>
+        <span class="age">{{ item.age.start }} - {{ item.age.end }}</span>
+        <p-button
+          label="Подробнее"
+          icon="pi pi-chevron-right"
+          @click.stop="goToCoursePage(item.id)"
+        />
       </template>
     </p-card>
   </div>
@@ -56,6 +61,22 @@ defineProps({
   align-items: center;
   padding-top: 1rem;
   padding-right: 1rem;
+}
+
+.duration {
+  font-size: 0.8rem;
+  color: #999;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.age {
+  font-size: 0.8rem;
+  color: #999;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .course-preview {
