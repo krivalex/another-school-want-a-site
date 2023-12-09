@@ -4,13 +4,6 @@
       <router-link to="/" class="navbar-brand">
         <img src="../assets/logo.png" alt="logo" />
       </router-link>
-      <div class="navbar-menu">
-        <router-link to="/" class="navbar-item">Главная</router-link>
-        <router-link to="/courses" class="navbar-item">Курсы</router-link>
-        <router-link to="/about" class="navbar-item">О нас</router-link>
-        <router-link to="/contacts" class="navbar-item">Контакты</router-link>
-        <router-link to="/admin" class="navbar-item">Админка</router-link>
-      </div>
     </div>
   </nav>
 </template>

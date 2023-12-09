@@ -1,4 +1,4 @@
-import type { Course } from '@/interfaces'
+import type { Course, Request } from '@/interfaces'
 
 export const initNewCourse: Course = {
   id: Date.now().toString(),
@@ -15,4 +15,15 @@ export const initNewCourse: Course = {
     start: 0,
     end: 0
   }
+}
+
+export const initNewRequest: Request = {
+  id: Date.now().toString(),
+  author: '',
+  date: new Date(),
+  parentName: '',
+  childrenName: '',
+  phone: '',
+  age: '',
+  class: ''
 }

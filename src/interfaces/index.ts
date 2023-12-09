@@ -23,3 +23,20 @@ export interface User {
   favourites: []
   status: 'client' | 'admin'
 }
+
+export interface Request {
+  firebaseId?: string
+  id: string
+  author: User | string
+  date: Date
+  parentName: string
+  childrenName: string
+  phone: string
+  age: string
+  class: string
+}
+
+export interface DataTableField {
+  header: string
+  field: string
+}

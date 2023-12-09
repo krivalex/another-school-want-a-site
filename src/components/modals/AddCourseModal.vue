@@ -56,8 +56,12 @@
     </div>
     <template #footer>
       <div class="buttons-container">
-        <p-button class="p-button p-button-danger" @click="clearContent" label="Отмена"></p-button>
-        <p-button class="p-button p-button-success" @click="addContent" label="Создать"></p-button>
+        <p-button class="p-button p-button-danger" @click="closeDialog" label="Отмена"></p-button>
+        <p-button
+          class="p-button p-button-success"
+          @click="addNewCourse"
+          label="Создать"
+        ></p-button>
       </div>
     </template>
   </p-dialog>
@@ -73,11 +77,29 @@ import PSlider from 'primevue/slider'
 import PDropdown from 'primevue/dropdown'
 import PInputNumber from 'primevue/inputnumber'
 
-const { addContent, visibleAddModal, newCourse, clearContent, uploadImage } = useCourse()
+const {
+  addContent,
+  visibleAddModal,
+  newCourse,
+  clearContent,
+  uploadImage,
+  toggleVisibleAddCourse
+} = useCourse()
 
 async function onUpload(e: any) {
   const image = e.target.files[0]
   await uploadImage(image)
+}
+
+async function addNewCourse() {
+  await addContent()
+  clearContent()
+  toggleVisibleAddCourse()
+}
+
+function closeDialog() {
+  clearContent()
+  toggleVisibleAddCourse()
 }
 </script>
 
