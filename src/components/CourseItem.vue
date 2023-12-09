@@ -12,9 +12,11 @@
         <div v-html="item.shortDescription"></div>
       </template>
       <template #footer>
-        <span class="date-info">{{ dateFormmatter(item.created) }}</span>
-        <span class="duration">{{ item.duration }}</span>
-        <span class="age">{{ item.age.start }} - {{ item.age.end }}</span>
+        <div class="info">
+          <span class="date-info">{{ dateFormmatter(item.created) }}</span>
+          <span class="duration">{{ item.duration }} дней</span>
+          <span class="age">{{ item.age.start }} - {{ item.age.end }} лет</span>
+        </div>
         <p-button
           label="Подробнее"
           icon="pi pi-chevron-right"
@@ -54,26 +56,6 @@ defineProps({
 }
 
 .date-info {
-  font-size: 0.8rem;
-  color: #999;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-top: 1rem;
-  padding-right: 1rem;
-}
-
-.duration {
-  font-size: 0.8rem;
-  color: #999;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.age {
-  font-size: 0.8rem;
-  color: #999;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -84,5 +66,19 @@ defineProps({
   height: 200px;
   object-fit: cover;
   object-position: center;
+}
+
+:deep(.p-card-body img) {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 </style>
