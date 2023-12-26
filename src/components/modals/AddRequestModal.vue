@@ -17,6 +17,16 @@
         <p-input-text id="phone" type="text" v-model="newRequest.phone" />
       </div>
       <div class="p-field">
+        <label for="course">Курс</label>
+        <p-dropdown
+          id="course"
+          v-model="newRequest.course"
+          :options="courseList"
+          optionLabel="title"
+          optionValue="title"
+        />
+      </div>
+      <div class="p-field">
         <label for="age">Возраст ребенка</label>
         <p-input-text id="age" type="text" v-model="newRequest.age" />
       </div>
@@ -39,21 +49,31 @@
 </template>
 
 <script setup lang="ts">
-import { useRequest } from '@/composables/useRequest'
 import PInputText from 'primevue/inputtext'
 import PDialog from 'primevue/dialog'
 import PButton from 'primevue/button'
+import PDropdown from 'primevue/dropdown'
+
+import { useRequest } from '@/composables/useRequest'
+import { useCourse } from '@/composables/useCourse'
+import { onMounted } from 'vue'
 
 const { visibleAddRequestModal, newRequest, addRequest, clearRequest, toggleVisibleAddRequest } =
   useRequest()
+
+const { courseList, getAllContent } = useCourse()
+
+onMounted(async () => {
+  await getAllContent()
+})
 
 function closeDialog() {
   toggleVisibleAddRequest()
   clearRequest()
 }
 
-function addNewRequest() {
-  addRequest()
+async function addNewRequest() {
+  await addRequest()
   closeDialog()
 }
 </script>

@@ -34,6 +34,7 @@ export interface Request {
   phone: string
   age: string
   class: string
+  course: string
 }
 
 export interface DataTableField {

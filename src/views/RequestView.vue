@@ -1,5 +1,5 @@
 <template>
-  <template v-if="user?.status !== 'admin'">
+  <template v-if="user?.status === 'admin'">
     <section class="access">
       <p-datatable :value="requestComputed as (keyof any)[]">
         <p-column

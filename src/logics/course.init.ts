@@ -25,5 +25,6 @@ export const initNewRequest: Request = {
   childrenName: '',
   phone: '',
   age: '',
-  class: ''
+  class: '',
+  course: ''
 }

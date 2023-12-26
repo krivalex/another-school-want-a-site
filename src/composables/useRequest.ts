@@ -37,7 +37,8 @@ const requestComputed = computed(() => {
       class: `${item.class} класс`,
       parentName: item.parentName,
       childrenName: item.childrenName,
-      phone: item.phone
+      phone: item.phone,
+      course: item.course
     }
   })
   return _requestList || []
