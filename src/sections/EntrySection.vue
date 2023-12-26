@@ -81,6 +81,12 @@ function goToCoursePage(id: string) {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
+@media screen and (max-width: 400px) {
+  .container {
+    padding: 5px;
+  }
+}
+
 .sales-empathy {
   width: 50%;
   display: flex;
