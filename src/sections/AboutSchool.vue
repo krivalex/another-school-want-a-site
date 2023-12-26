@@ -1,32 +1,36 @@
 <template>
-  <p-timeline :value="events" align="alternate" class="customized-timeline">
-    <template #marker="slotProps">
-      <div class="customized-marker" :style="{ backgroundColor: slotProps.item.color }">
-        <i :class="slotProps.item.icon"></i>
-      </div>
-    </template>
+  <div class="customized-timeline">
+    <div class="container">
+      <p-timeline :value="events" align="alternate">
+        <template #marker="slotProps">
+          <div class="customized-marker" :style="{ backgroundColor: slotProps.item.color }">
+            <i :class="slotProps.item.icon"></i>
+          </div>
+        </template>
 
-    <template #content="slotProps">
-      <p-card class="card-of-info">
-        <template #title>
-          {{ slotProps.item.header }}
+        <template #content="slotProps">
+          <p-card class="card-of-info">
+            <template #title>
+              {{ slotProps.item.header }}
+            </template>
+            <template #subtitle>
+              {{ slotProps.item.date }}
+            </template>
+            <template #content>
+              <img
+                v-if="slotProps.item.image"
+                :src="`/images/product/${slotProps.item.image}`"
+                :alt="slotProps.item.name"
+                width="200"
+                class="shadow-1"
+              />
+              <p>{{ slotProps.item.description }}</p>
+            </template>
+          </p-card>
         </template>
-        <template #subtitle>
-          {{ slotProps.item.date }}
-        </template>
-        <template #content>
-          <img
-            v-if="slotProps.item.image"
-            :src="`/images/product/${slotProps.item.image}`"
-            :alt="slotProps.item.name"
-            width="200"
-            class="shadow-1"
-          />
-          <p>{{ slotProps.item.description }}}</p>
-        </template>
-      </p-card>
-    </template>
-  </p-timeline>
+      </p-timeline>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -82,6 +86,7 @@ const events = [
 
 .customized-marker {
   border-radius: 50%;
+  transform: scale(1.5);
 }
 
 .customized-marker i {
@@ -95,5 +100,33 @@ const events = [
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: 10px;
+}
+
+:deep(.p-card) {
+  background: #ffffff;
+  color: rgb(0 0 0 / 87%);
+}
+
+:deep(.card-of-info) {
+  max-width: 600px;
+  padding: 0 !important;
+}
+
+:deep(.p-card-content) {
+  padding: 0 !important;
+}
+
+:deep(.p-card-title) {
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 </style>

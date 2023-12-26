@@ -64,7 +64,7 @@ function goToCoursePage(id: string) {
 
 <style scoped>
 .header-about {
-  height: 90vh;
+  height: 92vh;
   width: 100%;
   position: relative;
   display: flex;
