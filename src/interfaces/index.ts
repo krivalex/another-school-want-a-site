@@ -8,6 +8,7 @@ export interface Course {
   shortDescription: string
   duration: string
   teachers: []
+  firebaseId: string
   teachearsDesc: string
   age: {
     start: number

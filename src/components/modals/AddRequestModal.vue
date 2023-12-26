@@ -61,11 +61,7 @@ import { onMounted } from 'vue'
 const { visibleAddRequestModal, newRequest, addRequest, clearRequest, toggleVisibleAddRequest } =
   useRequest()
 
-const { courseList, getAllContent } = useCourse()
-
-onMounted(async () => {
-  await getAllContent()
-})
+const { courseList } = useCourse()
 
 function closeDialog() {
   toggleVisibleAddRequest()

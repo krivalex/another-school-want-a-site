@@ -21,11 +21,11 @@
 
 <script setup lang="ts">
 import { useCourse } from '@/composables/useCourse'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import CourseItem from '@/components/CourseItem.vue'
 import PCarousel from 'primevue/carousel'
 
-const { courseList, getAllContent } = useCourse()
+const { courseList } = useCourse()
 
 const responsiveOptions = ref([
   {
@@ -49,10 +49,6 @@ const responsiveOptions = ref([
     numScroll: 1
   }
 ])
-
-onMounted(async () => {
-  await getAllContent()
-})
 </script>
 
 <style scoped>

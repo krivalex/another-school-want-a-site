@@ -45,17 +45,12 @@
 
 <script setup lang="ts">
 import { useCourse } from '@/composables/useCourse'
-import { onMounted } from 'vue'
 import PButton from 'primevue/button'
 import { useRouter } from 'vue-router'
 
-const { courseList, getAllContent } = useCourse()
+const { courseList } = useCourse()
 
 const router = useRouter()
-
-onMounted(() => {
-  getAllContent()
-})
 
 function goToCoursePage(id: string) {
   router.push(`/course/${id}`)

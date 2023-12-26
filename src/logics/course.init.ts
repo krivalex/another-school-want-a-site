@@ -2,6 +2,7 @@ import type { Course, Request } from '@/interfaces'
 
 export const initNewCourse: Course = {
   id: Date.now().toString(),
+  firebaseId: '',
   author: '',
   image: '',
   created: new Date(),

@@ -17,7 +17,7 @@ import { initNewCourse } from '@/logics'
 
 const course = ref<Course | DocumentData>()
 const selectedCourse = ref<Course>()
-const courseList = ref([] as DocumentData)
+const courseList = ref<Course[]>([])
 const visibleAddModal = ref(false)
 
 const newCourse = ref<Course>(initNewCourse)
@@ -41,7 +41,7 @@ export const useCourse = () => {
           firebaseId: doc.id,
           ...doc.data()
         }
-        courseList.value.push(compressive)
+        courseList.value.push(compressive as Course)
       })
       loading.courseList = false
     } catch (error) {
