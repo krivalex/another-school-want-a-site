@@ -45,6 +45,13 @@ const redirectToRequest = () => {
 </script>
 
 <style scoped>
+.p-toolbar {
+  background-color: #f5f5f5;
+  color: black;
+  text-align: center;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
 .adds-button {
   display: flex;
   align-items: center;
@@ -53,5 +60,7 @@ const redirectToRequest = () => {
 
 .adds-button .p-button {
   padding: 0.2rem 0.5rem;
+  background-color: black;
+  color: white;
 }
 </style>

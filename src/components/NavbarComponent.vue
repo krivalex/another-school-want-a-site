@@ -2,7 +2,7 @@
   <nav class="navbar">
     <div class="container">
       <router-link to="/" class="navbar-brand">
-        <img src="../assets/logo.png" alt="logo" />
+        <h1 class="logo">FLAGMAN SCHOOL</h1>
       </router-link>
       <p-button
         class="enter"
@@ -49,11 +49,12 @@ const { user, googleLogout, googleRegister } = useUser()
 
 .navbar-brand {
   display: inline-block;
-  padding: 0 15px;
+  padding: 0 25px;
   font-size: 18px;
   white-space: nowrap;
   text-decoration: none;
   color: #333;
+  font-family: Rubik Doodle Shadow;
 }
 
 .navbar-brand img {
