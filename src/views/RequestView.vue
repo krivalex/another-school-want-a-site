@@ -63,6 +63,12 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+:deep(.p-datatable) {
+  width: 100%;
+  height: 100%;
+  min-height: 85vh;
+}
+
 .no-access,
 .access {
   display: flex;

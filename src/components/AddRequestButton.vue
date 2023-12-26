@@ -19,8 +19,9 @@ const { toggleVisibleAddRequest } = useRequest()
 <style scoped>
 .p-button {
   position: fixed;
-  bottom: 20px;
+  bottom: 15px;
   right: 20px;
   z-index: 100;
+  background-color: #000000;
 }
 </style>

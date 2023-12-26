@@ -3,6 +3,7 @@
     <EntrySection />
     <DividerComponent />
     <AboutSchool />
+    <DividerComponent />
     <CourseList />
   </main>
 </template>

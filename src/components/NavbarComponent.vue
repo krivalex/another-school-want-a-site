@@ -97,4 +97,10 @@ const { user, googleLogout, googleRegister } = useUser()
   font-size: 1.2rem;
   margin-right: 1rem;
 }
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 0.7rem;
+  }
+}
 </style>

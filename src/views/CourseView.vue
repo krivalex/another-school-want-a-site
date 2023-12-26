@@ -61,11 +61,22 @@ onMounted(async () => {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 1rem;
+  padding: 10px;
   background-color: #fff;
   border-radius: 0 0 0 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   color: black;
+}
+
+.course-body-absolute h2 {
+  font-size: 2rem;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.course-body-absolute course-age p {
+  margin-block-start: 0.3rem;
+  margin-block-end: 0;
 }
 
 .course-title {
@@ -90,5 +101,11 @@ onMounted(async () => {
 .html-description {
   min-height: 100%;
   font-size: larger;
+  padding: 0 20px;
+}
+
+.html-description img {
+  max-width: 100%;
+  height: auto;
 }
 </style>
