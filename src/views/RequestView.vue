@@ -54,6 +54,10 @@ const columns = ref<DataTableField[]>([
   {
     header: 'Класс',
     field: 'class'
+  },
+  {
+    header: 'Выбранный кружок',
+    field: 'course'
   }
 ])
 

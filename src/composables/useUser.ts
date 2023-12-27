@@ -9,7 +9,7 @@ import {
 } from 'firebase/firestore'
 import { db } from '@/firebase-config'
 import { ref, computed, reactive } from 'vue'
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import type { User } from '@/interfaces'
 
 const user = ref<User | DocumentData | null>()
