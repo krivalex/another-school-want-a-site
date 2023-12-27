@@ -65,6 +65,7 @@ export const useCourse = () => {
     loading.newCourse = true
     try {
       if (newCourse.value) {
+        newCourse.value.id = Date.now().toString()
         await addDoc(collection(db, yourDatabase), newCourse.value)
         loading.newCourse = false
       }

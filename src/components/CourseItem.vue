@@ -1,5 +1,6 @@
 <template>
   <div @click="goToCoursePage(item.id)">
+    {{ item.id }}
     <p-card class="course-card">
       <template #header>
         <img :src="item.image" alt="Картинка курса" class="course-preview" />
