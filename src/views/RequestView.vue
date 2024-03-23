@@ -7,7 +7,27 @@
           :key="column.field"
           :field="column.field"
           :header="column.header"
-        />
+          :sortable="true"
+          :reorderableColumns="true"
+        >
+          <template #body="{ data, field }">
+            <template v-if="field === 'status'">
+              <div class="status">
+                <div class="text">
+                  <span v-if="data[field] === 'created'">Новая</span>
+                  <span v-else-if="data[field] === 'in-work'">В работе</span>
+                  <span v-else-if="data[field] === 'rejected'">Отклонена</span>
+                  <span v-else-if="data[field] === 'completed'">Отработана</span>
+                  <span v-else>Отсутствует</span>
+                </div>
+                <div class="change-icon">
+                  <p-button icon="pi pi-angle-down" class="p-button-text" />
+                </div>
+              </div>
+            </template>
+            <span v-else>{{ data[field] }}</span>
+          </template>
+        </p-column>
       </p-datatable>
     </section>
   </template>
@@ -23,6 +43,7 @@
 import { useUser } from '@/composables/useUser'
 import PDatatable from 'primevue/datatable'
 import PColumn from 'primevue/column'
+import PButton from 'primevue/button'
 import { useRequest } from '@/composables/useRequest'
 import { onMounted, ref } from 'vue'
 import type { Request, DataTableField } from '@/interfaces'
@@ -30,7 +51,7 @@ import type { Request, DataTableField } from '@/interfaces'
 const { user } = useUser()
 const { requestList, getAllRequest, requestComputed } = useRequest()
 
-const columns = ref<DataTableField[]>([
+const columns = ref<DataTableField<Request>[]>([
   {
     header: 'Дата',
     field: 'date'
@@ -58,6 +79,10 @@ const columns = ref<DataTableField[]>([
   {
     header: 'Выбранный кружок',
     field: 'course'
+  },
+  {
+    header: 'Статус',
+    field: 'status'
   }
 ])
 
@@ -89,5 +114,11 @@ onMounted(async () => {
   color: black;
   background-color: #818cf8;
   padding: 0.5rem 1rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
 }
 </style>

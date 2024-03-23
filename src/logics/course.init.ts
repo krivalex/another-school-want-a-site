@@ -27,5 +27,6 @@ export const initNewRequest: Request = {
   phone: '',
   age: '',
   class: '',
-  course: ''
+  course: '',
+  status: 'created'
 }

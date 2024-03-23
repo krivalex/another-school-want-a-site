@@ -36,9 +36,10 @@ export interface Request {
   age: string
   class: string
   course: string
+  status: 'created' | 'in-work' | 'rejected' | 'completed'
 }
 
-export interface DataTableField {
+export interface DataTableField<T> {
   header: string
-  field: string
+  field: keyof T
 }
