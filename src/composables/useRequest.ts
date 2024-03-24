@@ -1,17 +1,6 @@
-import {
-  getDocs,
-  addDoc,
-  doc,
-  collection,
-  type DocumentData,
-  deleteDoc,
-  updateDoc
-} from 'firebase/firestore'
+import { getDocs, addDoc, doc, collection, type DocumentData, updateDoc } from 'firebase/firestore'
 import { db } from '@/firebase-config'
 import { ref, reactive, computed } from 'vue'
-import { useUser } from './useUser'
-import * as firebase from 'firebase/storage'
-import { getStorage, uploadBytes } from 'firebase/storage'
 import type { Request } from '@/interfaces'
 import { initNewRequest } from '@/logics'
 import { dateFormmatter } from '@/utils'
@@ -32,13 +21,10 @@ const requestComputed = computed(() => {
   if (!requestList.value) return
   const _requestList = requestList.value?.map((item: any) => {
     return {
+      ...item,
       date: dateFormmatter(item.date),
       age: `${item.age} лет`,
-      class: `${item.class} класс`,
-      parentName: item.parentName,
-      childrenName: item.childrenName,
-      phone: item.phone,
-      course: item.course
+      class: `${item.class} класс`
     }
   })
   return _requestList || []
@@ -100,6 +86,17 @@ export const useRequest = () => {
     visibleAddRequestModal.value = !visibleAddRequestModal.value
   }
 
+  async function updateRequest(request: Request) {
+    loading.allRequest = true
+    try {
+      const firebaseId = request.firebaseId ?? ''
+      await updateDoc(doc(db, yourDatabase, firebaseId), request as DocumentData)
+      loading.allRequest = false
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return {
     request,
     requestList,
@@ -112,6 +109,7 @@ export const useRequest = () => {
     getAllRequest,
     getRequestById,
     addRequest,
+    updateRequest,
     requestComputed
   }
 }

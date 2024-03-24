@@ -2,7 +2,6 @@
   <template v-if="user?.status === 'admin'">
     <p-toolbar>
       <template #start>
-        <h3>Панель администратора</h3>
         <AddCourseModal />
       </template>
       <template #end>
@@ -50,7 +49,6 @@ const redirectToRequest = () => {
   color: black;
   text-align: center;
   padding: 0 1rem;
-  margin-bottom: 1rem;
 }
 .adds-button {
   display: flex;
@@ -59,8 +57,10 @@ const redirectToRequest = () => {
 }
 
 .adds-button .p-button {
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.5rem;
   background-color: black;
   color: white;
+  font-size: 1rem;
+  border-radius: 0.5rem;
 }
 </style>

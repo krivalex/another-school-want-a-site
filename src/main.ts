@@ -5,7 +5,7 @@ import { createPinia } from 'pinia'
 import { initializeApp } from 'firebase/app'
 
 import PrimeVue from 'primevue/config'
-import 'primevue/resources/themes/lara-dark-indigo/theme.css'
+import 'primevue/resources/themes/mdc-light-deeppurple/theme.css'
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 

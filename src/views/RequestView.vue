@@ -1,7 +1,7 @@
 <template>
   <template v-if="user?.status === 'admin'">
     <section class="access">
-      <p-datatable :value="requestComputed as (keyof any)[]">
+      <p-datatable :value="requestComputed as (keyof any)[]" :loading="loading.allRequest">
         <p-column
           v-for="column in columns"
           :key="column.field"
@@ -12,18 +12,14 @@
         >
           <template #body="{ data, field }">
             <template v-if="field === 'status'">
-              <div class="status">
-                <div class="text">
-                  <span v-if="data[field] === 'created'">Новая</span>
-                  <span v-else-if="data[field] === 'in-work'">В работе</span>
-                  <span v-else-if="data[field] === 'rejected'">Отклонена</span>
-                  <span v-else-if="data[field] === 'completed'">Отработана</span>
-                  <span v-else>Отсутствует</span>
-                </div>
-                <div class="change-icon">
-                  <p-button icon="pi pi-angle-down" class="p-button-text" />
-                </div>
-              </div>
+              <p-dropdown
+                v-model="data[field]"
+                :options="statuses"
+                :value="data[field]"
+                option-label="label"
+                option-value="value"
+                @change="updateStatus(data)"
+              />
             </template>
             <span v-else>{{ data[field] }}</span>
           </template>
@@ -43,13 +39,29 @@
 import { useUser } from '@/composables/useUser'
 import PDatatable from 'primevue/datatable'
 import PColumn from 'primevue/column'
-import PButton from 'primevue/button'
+import PDropdown from 'primevue/dropdown'
 import { useRequest } from '@/composables/useRequest'
 import { onMounted, ref } from 'vue'
 import type { Request, DataTableField } from '@/interfaces'
 
 const { user } = useUser()
-const { requestList, getAllRequest, requestComputed } = useRequest()
+const { getAllRequest, requestComputed, requestList, updateRequest, loading } = useRequest()
+
+const statuses = [
+  { label: 'Новая', value: 'created' },
+  { label: 'В работе', value: 'in-work' },
+  { label: 'Отклонена', value: 'rejected' },
+  { label: 'Отработана', value: 'completed' }
+]
+
+const updateStatus = async (data: Request) => {
+  requestList.value.forEach(async (request: Request) => {
+    if (request.id === data.id) {
+      request.status = data.status
+      await updateRequest(request)
+    }
+  })
+}
 
 const columns = ref<DataTableField<Request>[]>([
   {
@@ -91,11 +103,15 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 :deep(.p-datatable) {
   width: 100%;
   height: 100%;
   min-height: 85vh;
+}
+
+:deep(.p-datatable .p-dropdown) {
+  width: 100%;
 }
 
 .no-access,
@@ -106,6 +122,7 @@ onMounted(async () => {
   justify-content: center;
   height: 100%;
   min-height: 85vh;
+  font-family: 'PT Sans', sans-serif;
 }
 .link-to-home {
   display: block;

@@ -6,11 +6,15 @@ import FooterComponent from '@/components/FooterComponent.vue'
 import AddRequestButton from './components/AddRequestButton.vue'
 import { onMounted } from 'vue'
 import { useCourse } from './composables/useCourse'
+import { useUser } from './composables/useUser'
 
 const { getAllContent } = useCourse()
+const { getAllUsers, getUserFromLocalStorage } = useUser()
 
 onMounted(async () => {
   await getAllContent()
+  await getAllUsers()
+  getUserFromLocalStorage()
 })
 </script>
 
