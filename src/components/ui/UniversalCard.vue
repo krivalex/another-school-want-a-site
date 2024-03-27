@@ -1,7 +1,6 @@
 <template>
   <div
     :id="card.header"
-    :ref="el"
     class="card"
     :style="`top: ${card.position.top}; left: ${card.position.left}; background-color: ${card.color}; transform: rotate(${card.position.rotate});`"
   >
@@ -18,22 +17,22 @@
 
 <script setup lang="ts">
 import type { CardDescription } from '@/interfaces'
-import { ref } from 'vue'
-import { useDraggable } from '@vueuse/core'
+// import { ref } from 'vue'
+// import { useDraggable } from '@vueuse/core'
 
 defineProps<{
   card: CardDescription
 }>()
 
-const el = ref<HTMLElement | null>(null)
-const { x, y } = useDraggable(el)
+// const el = ref<HTMLElement | null>(null)
+// const { x, y } = useDraggable(el)
 </script>
 
 <style scoped lang="scss">
 .card {
   position: absolute;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 330px;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -52,16 +51,16 @@ const { x, y } = useDraggable(el)
 
   .card-header {
     h3 {
-      font-size: 24px;
+      font-size: 20px;
       margin: 0;
     }
 
     .card-image {
-      margin-top: 20px;
+      margin-top: 10px;
 
       img {
         width: 100%;
-        height: 200px;
+        height: 150px;
         object-fit: cover;
         border-radius: 10px;
       }

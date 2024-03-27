@@ -1,15 +1,14 @@
 <template>
   <div @click="goToCoursePage(item.id)">
-    {{ item.id }}
     <p-card class="course-card">
       <template #header>
         <img :src="item.image" alt="Картинка курса" class="course-preview" />
       </template>
       <template #title>
-        <h1>{{ item.title }}</h1>
+        <span class="course-name">{{ item.title }}</span>
       </template>
       <template #subtitle>
-        <h2>{{ item.duration }} дней</h2>
+        <span class="course-duration">{{ item.duration }}</span>
         <div v-html="item.shortDescription"></div>
       </template>
       <template #footer>
@@ -48,12 +47,25 @@ defineProps({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .course-card {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+  max-height: 500px;
+  background-color: aliceblue;
+  border-radius: 2rem;
+
+  .course-name {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  .course-duration {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
 }
 
 .date-info {
@@ -80,6 +92,5 @@ defineProps({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
 }
 </style>

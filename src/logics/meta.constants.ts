@@ -61,7 +61,7 @@ export const cardsEvents: CardDescription[] = [
   {
     header: 'ФЛАГМАН',
     description:
-      'это не просто школа, это место, где ваш ребенок будет наслаждаться каждым моментом своего детства. Мы стремимся сделать учебу увлекательной и веселой, чтобы дети с радостью ходили в школу и сохраняли самые яркие воспоминания о своем детстве.',
+      'это не просто школа, это место, где ваш ребенок будет наслаждаться каждым моментом своего детства.',
     imageLink:
       'https://img.freepik.com/free-vector/futuristic-classroom-little-children-study-with-high-tech-equipment-smart-spaces-school-ai-education-learning-management-system-concept_335657-812.jpg',
     color: '#F44336',
