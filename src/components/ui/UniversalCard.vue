@@ -1,8 +1,11 @@
 <template>
   <div
+    :id="card.header"
+    :ref="el"
     class="card"
-    :style="`top: ${card.position.top}; left: ${card.position.left}; background-color: ${card.color}`"
+    :style="`top: ${card.position.top}; left: ${card.position.left}; background-color: ${card.color}; transform: rotate(${card.position.rotate});`"
   >
+    <img class="pin" src="@/assets/pin.png" alt="" />
     <div class="card-header">
       <h3>{{ card.header }}</h3>
       <div class="card-image">
@@ -15,28 +18,38 @@
 
 <script setup lang="ts">
 import type { CardDescription } from '@/interfaces'
+import { ref } from 'vue'
+import { useDraggable } from '@vueuse/core'
 
 defineProps<{
   card: CardDescription
 }>()
+
+const el = ref<HTMLElement | null>(null)
+const { x, y } = useDraggable(el)
 </script>
 
 <style scoped lang="scss">
 .card {
   position: absolute;
-  width: 300px;
-  height: 400px;
-  border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  transition: 0.5s;
 
-  &:hover {
-    transform: scale(1.1);
+  .pin {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
   }
+
   .card-header {
     h3 {
       font-size: 24px;

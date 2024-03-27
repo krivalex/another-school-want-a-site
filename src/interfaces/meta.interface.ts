@@ -11,5 +11,6 @@ export interface CardDescription {
   position: {
     left: string
     top: string
+    rotate?: string
   }
 }
