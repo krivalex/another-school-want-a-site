@@ -57,6 +57,7 @@ defineProps<{
 
     .card-image {
       margin-top: 10px;
+      margin-bottom: 10px;
 
       img {
         width: 100%;
@@ -67,8 +68,8 @@ defineProps<{
     }
 
     .card-buy {
-      margin-top: 20px;
       font-size: 18px;
+      padding-top: 0.5rem;
     }
   }
 }

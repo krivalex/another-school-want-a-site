@@ -6,7 +6,7 @@ export const cardsEvents: CardDescription[] = [
     description: 'Ваш ребенок находится в школе в течение полного учебного дня, с 08:00 до 18:00.',
     imageLink:
       'https://img.freepik.com/premium-vector/school-building-design-vector-illustrator_24640-49040.jpg',
-    color: '#9C27B0',
+    color: '#e575f9',
     position: {
       left: '20%',
       top: '10%',
@@ -18,7 +18,7 @@ export const cardsEvents: CardDescription[] = [
     description: 'Вашему ребенку предоставляется сбалансированное 4-разовое питание.',
     imageLink:
       'https://u7.uidownload.com/vector/805/290/vector-healthy-food-illustration-vectors-06-eps.jpg',
-    color: '#673AB7',
+    color: '#a996cc',
     position: {
       left: '20%',
       top: '50%'

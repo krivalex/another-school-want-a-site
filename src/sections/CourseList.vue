@@ -1,5 +1,6 @@
 <template>
   <div class="all-courses">
+    <span class="desc-text">Наши предметы</span>
     <p-carousel
       :value="courseList"
       :numVisible="3"
@@ -47,13 +48,21 @@ const responsiveOptions = ref([
 ])
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .all-courses {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   background-color: #ffffff;
+
+  .desc-text {
+    font-family: 'Oswald', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 8rem;
+  }
 }
 
 :deep(.p-carousel-indicator) {

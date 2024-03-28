@@ -8,20 +8,31 @@
         <span class="course-name">{{ item.title }}</span>
       </template>
       <template #subtitle>
-        <span class="course-duration">{{ item.duration }}</span>
         <div v-html="item.shortDescription"></div>
       </template>
       <template #footer>
-        <div class="info">
-          <span class="date-info">{{ dateFormmatter(item.created) }}</span>
-          <span class="duration">{{ item.duration }} дней</span>
-          <span class="age">{{ item.age.start }} - {{ item.age.end }} лет</span>
+        <div class="course-info">
+          <div class="info">
+            <p-tag
+              :value="dateFormmatter(item.created)"
+              icon="pi pi-calendar"
+              class="tag-element"
+            />
+            <p-tag :value="item.duration" icon="pi pi-clock" class="tag-element" />
+            <p-tag
+              :value="`${item.age.start} - ${item.age.end} лет`"
+              icon="pi pi-user"
+              class="tag-element"
+            />
+          </div>
+          <p-button
+            label="Подробнее"
+            icon="pi pi-chevron-right"
+            icon-pos="right"
+            @click.stop="goToCoursePage(item.id)"
+            class="p-button-sm about-button"
+          />
         </div>
-        <p-button
-          label="Подробнее"
-          icon="pi pi-chevron-right"
-          @click.stop="goToCoursePage(item.id)"
-        />
       </template>
     </p-card>
   </div>
@@ -32,6 +43,7 @@ import PCard from 'primevue/card'
 import PButton from 'primevue/button'
 import { dateFormmatter } from '@/utils'
 import { useRouter } from 'vue-router'
+import PTag from 'primevue/tag'
 
 const router = useRouter()
 
@@ -50,12 +62,22 @@ defineProps({
 <style scoped lang="scss">
 .course-card {
   width: 100%;
-  max-width: 600px;
+  max-width: 550px;
   margin: 0 auto;
   padding: 20px;
   max-height: 500px;
-  background-color: aliceblue;
-  border-radius: 2rem;
+  border-radius: 1rem;
+  margin: 20px;
+  background-color: rgb(248, 248, 248);
+
+  .course-preview {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
 
   .course-name {
     font-size: 3rem;
@@ -66,19 +88,43 @@ defineProps({
     font-size: 1.2rem;
     font-weight: 500;
   }
+
+  .course-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .about-button {
+      background-color: rgb(0, 165, 0);
+      font-size: 1.1rem;
+    }
+
+    .tag-element {
+      margin-right: 10px;
+      border-radius: 1rem;
+      padding: 0.3rem 0.6rem;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .date-info {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
 }
 
-.date-info {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.course-preview {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  object-position: center;
+:deep(.p-card) {
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 :deep(.p-card-body img) {
@@ -86,11 +132,7 @@ defineProps({
   height: 200px;
   object-fit: cover;
   object-position: center;
-}
-
-.info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 </style>
