@@ -14,3 +14,10 @@ export interface CardDescription {
     rotate?: string
   }
 }
+
+export interface EducationProccessBlock {
+  header: string
+  desc: string
+}
+
+export type EducationProccess = Record<string, EducationProccessBlock>

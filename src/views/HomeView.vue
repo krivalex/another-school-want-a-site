@@ -1,8 +1,8 @@
 <template>
   <main>
     <EntrySection />
-    <AboutSchool />
     <CourseList />
+    <AboutSchool />
     <EducationProcess />
     <AdvantagesList />
     <TrialLesson />

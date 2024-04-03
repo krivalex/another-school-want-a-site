@@ -5,74 +5,50 @@
       <div class="row">
         <div class="column">
           <div class="block standart">
-            <span class="header"> Индивидуальный план обучения </span>
-            <span class="text">
-              План обучения составляется с учетом целей ученика, его уровня знаний и preferred
-              learning style. План может быть изменен в процессе обучения, если это необходимо.
-            </span>
+            <span class="header">{{ educationProcessEvents.plan.header }} </span>
+            <span class="text">{{ educationProcessEvents.plan.desc }}</span>
           </div>
 
           <div class="block standart">
-            <span class="header"> Занятия </span>
-            <span class="text">
-              Занятия проходят в мини-группах (до 15-20 человек). Это позволяет учителю уделить
-              внимание каждому ученику. На уроках используются различные методы обучения, такие как:
-              Объяснение нового материала Практические упражнения Игры Дискуссии
-            </span>
+            <span class="header"> {{ educationProcessEvents.diagnostic.header }} </span>
+            <span class="text">{{ educationProcessEvents.diagnostic.desc }}</span>
           </div>
         </div>
 
         <div class="big-vertical-block standart">
-          <span class="header"> Диагностика </span>
-          <span class="text">
-            Перед началом обучения проводится диагностика уровня знаний ученика. Это позволяет
-            определить его strengths and weaknesses and develop an individual learning plan.
-          </span>
+          <span class="header"> {{ educationProcessEvents.progress.header }} </span>
+          <span class="text">{{ educationProcessEvents.progress.desc }}</span>
         </div>
 
         <div class="column">
           <div class="block standart">
-            <span class="header"> Контроль знаний </span>
-            <span class="text">
-              Проводится регулярный контроль знаний, чтобы отслеживать прогресс ученика. Контроль
-              знаний может проходить в форме тестов, контрольных работ, устных ответов и т.д.
-            </span>
+            <span class="header"> {{ educationProcessEvents.control.header }} </span>
+            <span class="text">{{ educationProcessEvents.control.desc }}</span>
           </div>
 
           <div class="block standart">
-            <span class="header"> Домашняя работа </span>
-            <span class="text">
-              Домашняя работа дается для закрепления материала, пройденного на уроке. Учитель делает
-              домашнюю работу вместе с учениками и дает обратную связь.
-            </span>
+            <span class="header"> {{ educationProcessEvents.homework.header }} </span>
+            <span class="text">{{ educationProcessEvents.homework.desc }}</span>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="big-horizontal-block standart">
-          <span class="header"> Обратная связь </span>
-          <span class="text">
-            Учителя школы "Flagman" всегда готовы дать обратную связь ученикам и их родителям. Это
-            позволяет улучшить процесс обучения и сделать его более эффективным. Преимущества
-            обучения в школе "Flagman": Индивидуальный подход: К каждому ученику применяется
-            индивидуальный подход, что позволяет ему максимально эффективно усваивать материал.
-            Современные методы обучения: В школе используются современные методы обучения, которые
-            делают процесс обучения интересным и эффективным. Опытные преподаватели: Все учителя
-            школы имеют высшее образование и большой опыт работы. Доступные цены: Стоимость обучения
-            в школе "Flagman" доступна для всех.
-          </span>
+          <span class="header"> {{ educationProcessEvents.feedback.header }}</span>
+          <span class="text">{{ educationProcessEvents.feedback.desc }}</span>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { educationProcessEvents } from '@/logics/meta.constants'
+</script>
 
 <style scoped lang="scss">
 .full-education-process {
-  background-image: url('https://kalix.club/uploads/posts/2022-12/1671735384_kalix-club-p-svetlii-delovoi-fon-dlya-prezentatsii-vkon-1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -80,19 +56,47 @@
   height: 100%;
 }
 
+.education-process {
+  width: 70vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 10px;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50%;
+    gap: 10px;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    gap: 10px;
+  }
+}
+
 .desc-text {
   font-family: 'Oswald', sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  font-size: 8rem;
+  font-size: 6rem;
   text-align: center;
   width: 100%;
   display: block;
 }
 
 .standart {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #ececec;
+  color: black;
   padding: 25px;
   border-radius: 20px;
   display: flex;
@@ -131,32 +135,5 @@
 .block {
   width: 100%;
   height: 50%;
-}
-
-.education-process {
-  width: 70vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  gap: 10px;
-
-  .row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 50%;
-    gap: 10px;
-  }
-
-  .column {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-    gap: 10px;
-  }
 }
 </style>

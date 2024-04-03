@@ -18,9 +18,9 @@ import { cardsEvents } from '@/logics'
 .desc-text {
   font-family: 'Oswald', sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
-  font-size: 8rem;
+  font-size: 6rem;
   text-align: center;
   width: 100%;
   display: block;

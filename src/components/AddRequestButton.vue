@@ -2,7 +2,7 @@
   <p-button
     class="p-button p-button-success p-button-rounded p-button-outlined p-button-bg"
     @click="toggleVisibleAddRequest"
-    label="Оставить заявку"
+    label="Записаться на пробный урок"
     icon="pi pi-plus"
   />
   <AddRequestModal />
@@ -23,5 +23,6 @@ const { toggleVisibleAddRequest } = useRequest()
   right: 20px;
   z-index: 100;
   background-color: #000000;
+  color: white;
 }
 </style>

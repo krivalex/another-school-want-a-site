@@ -1,7 +1,7 @@
 <template>
-  <p-dialog v-model:visible="visibleAddRequestModal">
+  <p-sidebar v-model:visible="visibleAddRequestModal">
     <template #header>
-      <h1>Создать заявку</h1>
+      <h1>Записаться на пробный урок</h1>
     </template>
     <div class="p-fluid">
       <div class="p-field">
@@ -35,17 +35,11 @@
         <p-input-text id="class" type="text" v-model="newRequest.class" />
       </div>
     </div>
-    <template #footer>
-      <div class="buttons-container">
-        <p-button class="p-button p-button-danger" @click="closeDialog" label="Отмена"></p-button>
-        <p-button
-          class="p-button p-button-success"
-          @click="addNewRequest"
-          label="Создать"
-        ></p-button>
-      </div>
-    </template>
-  </p-dialog>
+    <div class="buttons-container">
+      <p-button class="p-button p-button-danger" @click="closeDialog" label="Отмена"></p-button>
+      <p-button class="p-button p-button-success" @click="addNewRequest" label="Создать"></p-button>
+    </div>
+  </p-sidebar>
 </template>
 
 <script setup lang="ts">
@@ -53,10 +47,10 @@ import PInputText from 'primevue/inputtext'
 import PDialog from 'primevue/dialog'
 import PButton from 'primevue/button'
 import PDropdown from 'primevue/dropdown'
+import PSidebar from 'primevue/sidebar'
 
 import { useRequest } from '@/composables/useRequest'
 import { useCourse } from '@/composables/useCourse'
-import { onMounted } from 'vue'
 
 const { visibleAddRequestModal, newRequest, addRequest, clearRequest, toggleVisibleAddRequest } =
   useRequest()

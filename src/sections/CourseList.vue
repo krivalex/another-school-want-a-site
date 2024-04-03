@@ -1,19 +1,18 @@
 <template>
-  <div class="all-courses">
-    <span class="desc-text">Наши предметы</span>
+  <section class="all-courses">
     <p-carousel
       :value="courseList"
       :numVisible="3"
       :numScroll="1"
-      :responsiveOptions="responsiveOptions"
       circular
       :autoplayInterval="10000"
+      :showNavigators="false"
     >
       <template #item="slotProps">
         <course-item :item="slotProps.data" />
       </template>
     </p-carousel>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -24,28 +23,28 @@ import PCarousel from 'primevue/carousel'
 
 const { courseList } = useCourse()
 
-const responsiveOptions = ref([
-  {
-    breakpoint: '1400px',
-    numVisible: 2,
-    numScroll: 1
-  },
-  {
-    breakpoint: '1199px',
-    numVisible: 3,
-    numScroll: 1
-  },
-  {
-    breakpoint: '767px',
-    numVisible: 2,
-    numScroll: 1
-  },
-  {
-    breakpoint: '575px',
-    numVisible: 1,
-    numScroll: 1
-  }
-])
+// const responsiveOptions = ref([
+//   {
+//     breakpoint: '1400px',
+//     numVisible: 4,
+//     numScroll: 1
+//   },
+//   {
+//     breakpoint: '1199px',
+//     numVisible: 3,
+//     numScroll: 1
+//   },
+//   {
+//     breakpoint: '767px',
+//     numVisible: 4,
+//     numScroll: 1
+//   },
+//   {
+//     breakpoint: '575px',
+//     numVisible: 1,
+//     numScroll: 1
+//   }
+// ])
 </script>
 
 <style scoped lang="scss">
@@ -55,6 +54,8 @@ const responsiveOptions = ref([
   justify-content: center;
   gap: 1rem;
   background-color: #ffffff;
+  max-width: 90vw;
+  margin: 0 auto;
 
   .desc-text {
     font-family: 'Oswald', sans-serif;
@@ -80,5 +81,9 @@ const responsiveOptions = ref([
 :deep(.p-carousel-prev) svg {
   visibility: hidden;
   display: none;
+}
+
+:deep(.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button) {
+  background-color: #000;
 }
 </style>

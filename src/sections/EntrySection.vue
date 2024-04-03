@@ -1,10 +1,16 @@
 <template>
   <section class="header-about">
-    <div class="sales-text">
-      <span class="small">Детский центр "Flagman School"</span>
-      <span class="big">Учим полезным навыкам</span>
+    <div class="header">
+      <span class="sales-text">
+        Детский центр Flagman School — мы научим вашего ребенка полезным навыкам
+      </span>
+      <p-button
+        label="Записаться на пробный урок"
+        class="go-to-trial-button"
+        @click="goToCoursePage('1')"
+      />
     </div>
-    <div class="container">
+    <!-- <div class="container">
       <div class="sales-empathy">
         <h1>Научим вашего ребенка полезным навыкам</h1>
         <ul>
@@ -26,7 +32,7 @@
       <div class="photo-empathy">
         <img class="main-image" src="@/assets/teens.webp" />
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -44,9 +50,9 @@ function goToCoursePage(id: string) {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header-about {
-  height: 92vh;
+  height: 40vh;
   width: 100%;
   position: relative;
   display: flex;
@@ -54,35 +60,41 @@ function goToCoursePage(id: string) {
   align-items: center;
   background-color: #ffffff;
   flex-direction: column;
-  background-image: url('https://img-fotki.yandex.ru/get/68556/16969765.26f/0_a1f67_c39951cf_orig.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-  .sales-text {
+  .header {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 10rem;
+    padding-bottom: 3rem;
 
-    .small {
-      position: relative;
-      font-family: 'Oswald', sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-      font-size: 3rem;
-      color: gray;
-      top: 50px;
+    .go-to-trial-button {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      border-radius: 10px;
+      background-color: #000;
+      color: white;
     }
 
-    .big {
-      font-family: 'Oswald', sans-serif;
+    .sales-text {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      position: relative;
       font-optical-sizing: auto;
-      font-weight: 600;
+      font-weight: 200;
+      line-height: 52px;
       font-style: normal;
-      font-size: 9rem;
+      font-size: 3rem;
+      max-width: 1200px;
+      text-align: center;
     }
   }
 
