@@ -27,6 +27,7 @@
         <label for="experience">Дата рождения</label>
         <p-calendar id="experience" v-model="newTeacher.dateBorning" />
       </div>
+
       <div class="p-field">
         <label for="course">Курс</label>
         <p-multi-select
