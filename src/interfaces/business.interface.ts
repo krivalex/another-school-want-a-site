@@ -37,3 +37,16 @@ export interface Request {
   course: string
   status: 'created' | 'in-work' | 'rejected' | 'completed'
 }
+
+export interface Teacher {
+  id: string
+  firebaseId: string
+  name: string
+  surname: string
+  image: string
+  dateBorning: Date | string
+  courses: string[]
+  timeToWork: string
+  phone: string
+  level: 'junior' | 'middle' | 'senior'
+}

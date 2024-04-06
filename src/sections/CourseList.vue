@@ -7,6 +7,7 @@
       circular
       :autoplayInterval="10000"
       :showNavigators="false"
+      :responsiveOptions="responsiveOptions"
     >
       <template #item="slotProps">
         <course-item :item="slotProps.data" />
@@ -23,28 +24,28 @@ import PCarousel from 'primevue/carousel'
 
 const { courseList } = useCourse()
 
-// const responsiveOptions = ref([
-//   {
-//     breakpoint: '1400px',
-//     numVisible: 4,
-//     numScroll: 1
-//   },
-//   {
-//     breakpoint: '1199px',
-//     numVisible: 3,
-//     numScroll: 1
-//   },
-//   {
-//     breakpoint: '767px',
-//     numVisible: 4,
-//     numScroll: 1
-//   },
-//   {
-//     breakpoint: '575px',
-//     numVisible: 1,
-//     numScroll: 1
-//   }
-// ])
+const responsiveOptions = ref([
+  {
+    breakpoint: '1400px',
+    numVisible: 4,
+    numScroll: 1
+  },
+  {
+    breakpoint: '1199px',
+    numVisible: 3,
+    numScroll: 1
+  },
+  {
+    breakpoint: '767px',
+    numVisible: 4,
+    numScroll: 1
+  },
+  {
+    breakpoint: '575px',
+    numVisible: 1,
+    numScroll: 1
+  }
+])
 </script>
 
 <style scoped lang="scss">

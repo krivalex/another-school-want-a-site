@@ -3,6 +3,7 @@
     <p-toolbar>
       <template #start>
         <AddCourseModal />
+        <AddTeacherModal />
       </template>
       <template #end>
         <div class="adds-button">
@@ -12,7 +13,12 @@
             @click="toggleVisibleAddCourse"
             class="p-button-sm"
           />
-          <p-button label="Добавить преподавателя" icon="pi pi-user-plus" class="p-button-sm" />
+          <p-button
+            label="Добавить преподавателя"
+            icon="pi pi-user-plus"
+            class="p-button-sm"
+            @click="toggleVisibleAddTeacher"
+          />
           <p-button
             label="Посмотреть заявки"
             icon="pi pi-eye"
@@ -29,13 +35,16 @@
 import PToolbar from 'primevue/toolbar'
 import PButton from 'primevue/button'
 import AddCourseModal from '@/components/modals/AddCourseModal.vue'
+import AddTeacherModal from '@/components/modals/AddTeacherModal.vue'
 import { useCourse } from '@/composables/useCourse'
 import { useUser } from '@/composables/useUser'
 import { useRouter } from 'vue-router'
+import { useTeacher } from '@/composables/useTeacher'
 
 const { user } = useUser()
-
 const { toggleVisibleAddCourse } = useCourse()
+const { toggleVisibleAddTeacher } = useTeacher()
+
 const router = useRouter()
 
 const redirectToRequest = () => {
@@ -49,6 +58,7 @@ const redirectToRequest = () => {
   color: black;
   text-align: center;
   padding: 0 1rem;
+  margin-top: 60px;
 }
 .adds-button {
   display: flex;

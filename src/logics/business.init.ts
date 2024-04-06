@@ -1,4 +1,4 @@
-import type { Course, Request } from '@/interfaces'
+import type { Course, Request, Teacher } from '@/interfaces'
 
 export const initNewCourse: Course = {
   id: Date.now().toString(),
@@ -29,4 +29,17 @@ export const initNewRequest: Request = {
   class: '',
   course: '',
   status: 'created'
+}
+
+export const initNewTeacher: Teacher = {
+  id: Date.now().toString(),
+  firebaseId: '',
+  name: '',
+  surname: '',
+  image: '',
+  dateBorning: '',
+  courses: [],
+  timeToWork: '',
+  phone: '',
+  level: 'junior'
 }
