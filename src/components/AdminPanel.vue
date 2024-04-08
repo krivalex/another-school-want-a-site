@@ -5,7 +5,7 @@
         <AddCourseModal />
         <AddTeacherModal />
       </template>
-      <template #end>
+      <template #center>
         <div class="adds-button">
           <p-button
             label="Создать курс"
@@ -54,7 +54,7 @@ const redirectToRequest = () => {
 
 <style scoped>
 .p-toolbar {
-  background-color: #f5f5f5;
+  background-color: white;
   color: black;
   text-align: center;
   padding: 0 1rem;

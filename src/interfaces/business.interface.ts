@@ -32,7 +32,7 @@ export interface Request {
   parentName: string
   childrenName: string
   phone: string
-  age: string
+  age: number
   class: string
   course: string
   status: 'created' | 'in-work' | 'rejected' | 'completed'

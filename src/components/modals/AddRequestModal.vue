@@ -1,5 +1,5 @@
 <template>
-  <p-sidebar v-model:visible="visibleAddRequestModal">
+  <p-sidebar v-model:visible="visibleAddRequestModal" position="right" style="width: 30rem">
     <template #header>
       <h1>Записаться на пробный урок</h1>
     </template>
@@ -14,7 +14,7 @@
       </div>
       <div class="p-field">
         <label for="phone">Номер телефона</label>
-        <p-input-text id="phone" type="text" v-model="newRequest.phone" />
+        <p-input-mask id="phone" v-model="newRequest.phone" mask="+7 (999) 999-99-99" />
       </div>
       <div class="p-field">
         <label for="course">Курс</label>
@@ -28,11 +28,24 @@
       </div>
       <div class="p-field">
         <label for="age">Возраст ребенка</label>
-        <p-input-text id="age" type="text" v-model="newRequest.age" />
+        <p-input-number
+          id="age"
+          v-model="newRequest.age"
+          showButtons
+          buttonLayout="horizontal"
+          :max="25"
+          :min="5"
+        />
       </div>
       <div class="p-field">
         <label for="class">В каком классе ребенок?</label>
-        <p-input-text id="class" type="text" v-model="newRequest.class" />
+        <p-dropdown
+          id="class"
+          v-model="newRequest.class"
+          :options="classes"
+          optionLabel="label"
+          optionValue="value"
+        />
       </div>
     </div>
     <div class="buttons-container">
@@ -44,10 +57,12 @@
 
 <script setup lang="ts">
 import PInputText from 'primevue/inputtext'
-import PDialog from 'primevue/dialog'
 import PButton from 'primevue/button'
 import PDropdown from 'primevue/dropdown'
 import PSidebar from 'primevue/sidebar'
+import PInputMask from 'primevue/inputmask'
+import PInputNumber from 'primevue/inputnumber'
+import { classes } from '@/logics'
 
 import { useRequest } from '@/composables/useRequest'
 import { useCourse } from '@/composables/useCourse'
@@ -67,3 +82,16 @@ async function addNewRequest() {
   closeDialog()
 }
 </script>
+
+<style lang="scss" scoped>
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+
+  :deep(.p-button) {
+    width: 100%;
+  }
+}
+</style>

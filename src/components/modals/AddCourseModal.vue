@@ -73,8 +73,6 @@ import PDialog from 'primevue/dialog'
 import PEditor from 'primevue/editor'
 import PButton from 'primevue/button'
 import PInputText from 'primevue/inputtext'
-import PSlider from 'primevue/slider'
-import PDropdown from 'primevue/dropdown'
 import PInputNumber from 'primevue/inputnumber'
 
 const {

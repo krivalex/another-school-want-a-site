@@ -47,6 +47,29 @@
           @update:model-value="changerTimeToWork"
         />
       </div>
+      <div class="p-field">
+        <form class="input__wrapper" enctype="multipart/form-data">
+          <input
+            id="inputfile"
+            class="input inputfile"
+            name="images"
+            type="file"
+            accept=".jpg, .png"
+            @input="onUpload($event)"
+          />
+          <label for="inputfile" class="inputfile-button">
+            <span class="input__file-icon-wrapper">
+              <img
+                class="input__file-icon"
+                src="@/assets/upload-image.png"
+                alt="Выбрать файл"
+                width="25"
+              />
+            </span>
+            <span class="input__file-button-text"> Загрузи картинку</span>
+          </label>
+        </form>
+      </div>
     </div>
     <div class="buttons-container">
       <p-button class="p-button p-button-danger" @click="closeDialog" label="Отмена"></p-button>
@@ -78,6 +101,7 @@ const {
   getTeacherById,
   addTeacher,
   clearTeacher,
+  uploadImage,
   toggleVisibleAddTeacher
 } = useTeacher()
 
@@ -89,6 +113,11 @@ function closeDialog() {
 async function addNewTeacher() {
   await addTeacher()
   closeDialog()
+}
+
+async function onUpload(e: any) {
+  const image = e.target.files[0]
+  await uploadImage(image)
 }
 
 function changerTimeToWork() {
@@ -126,4 +155,16 @@ const levelVariants = [
 ]
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.input__wrapper {
+  width: 100%;
+  position: relative;
+  margin: 15px 0;
+  text-align: center;
+}
+.inputfile {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+</style>

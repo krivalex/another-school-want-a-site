@@ -3,6 +3,8 @@ import { initNewTeacher } from '@/logics'
 import { db } from '@/firebase-config'
 import { addDoc, collection, getDocs, type DocumentData } from 'firebase/firestore'
 import { reactive, ref } from 'vue'
+import { getStorage, uploadBytes } from 'firebase/storage'
+import * as firebase from 'firebase/storage'
 
 const teacher = ref<Teacher | DocumentData>()
 const teacherList = ref([] as DocumentData)
@@ -67,6 +69,28 @@ export const useTeacher = () => {
     visibleAddTeacherModal.value = !visibleAddTeacherModal.value
   }
 
+  async function uploadImage(file: any) {
+    const storage = getStorage()
+    const storageRef = firebase.ref(storage, 'teachers/' + file.name)
+
+    uploadBytes(storageRef, file)
+      .then(() => {
+        console.log('Файл успешно загружен!')
+
+        firebase
+          .getDownloadURL(storageRef)
+          .then((downloadURL) => {
+            newTeacher.value.image = downloadURL
+          })
+          .catch((error) => {
+            console.error('Ошибка получения ссылки на загруженный файл:', error)
+          })
+      })
+      .catch((error) => {
+        console.error('Ошибка загрузки файла:', error)
+      })
+  }
+
   return {
     teacher,
     teacherList,
@@ -77,6 +101,7 @@ export const useTeacher = () => {
     getTeacherById,
     addTeacher,
     clearTeacher,
-    toggleVisibleAddTeacher
+    toggleVisibleAddTeacher,
+    uploadImage
   }
 }
