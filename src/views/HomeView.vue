@@ -6,6 +6,7 @@
     <EducationProcess />
     <AdvantagesList />
     <TrialLesson />
+    <DynamicSectionName />
   </main>
 </template>
 
@@ -16,4 +17,7 @@ import EntrySection from '@/sections/EntrySection.vue'
 import EducationProcess from '@/sections/EducationProcess.vue'
 import AdvantagesList from '@/sections/AdvantagesList.vue'
 import TrialLesson from '@/sections/TrialLesson.vue'
+import DynamicSectionName from '@/components/DynamicSectionName.vue'
 </script>
+
+<style lang="scss" scoped></style>

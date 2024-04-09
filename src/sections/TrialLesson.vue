@@ -5,63 +5,77 @@ https://www.instagram.com/flagman.talgar?igsh=NGdndHByc3IxZDRw
 
 <template>
   <section class="trial-lesson">
-    <div class="molbert">
-      <div class="wood right-down"></div>
-      <div class="wood left-down"></div>
-      <div class="wood bottom-center"></div>
-      <div class="wood top-center"></div>
-
-      <div class="paper">
+    <MolbertDesign>
+      <template #paper-content>
         <span class="header">Оставить заявку на пробный урок</span>
         <span class="text">Заполните форму и мы свяжемся с вами в ближайшее время</span>
 
         <div class="p-fluid">
           <div class="p-field">
-            <label for="parentName">Ваше имя</label>
-            <p-input-text id="parentName" type="text" v-model="newRequest.parentName" />
+            <p-input-text
+              id="parentName"
+              type="text"
+              v-model="newRequest.parentName"
+              placeholder="Ваше имя"
+            />
           </div>
           <div class="p-field">
-            <label for="childrenName">Имя ребенка</label>
-            <p-input-text id="childrenName" type="text" v-model="newRequest.childrenName" />
+            <p-input-text
+              id="childrenName"
+              type="text"
+              v-model="newRequest.childrenName"
+              placeholder="Имя ребенка"
+            />
           </div>
           <div class="p-field">
-            <label for="phone">Номер телефона</label>
-            <p-input-mask id="phone" v-model="newRequest.phone" mask="+7 (999) 999-99-99" />
+            <p-input-mask
+              id="phone"
+              v-model="newRequest.phone"
+              mask="+7 (999) 999-99-99"
+              placeholder="Номер телефона"
+            />
           </div>
           <div class="p-field">
-            <label for="course">Курс</label>
             <p-dropdown
               id="course"
               v-model="newRequest.course"
               :options="courseList"
               optionLabel="title"
               optionValue="title"
+              placeholder="Выберите курс"
             />
           </div>
           <div class="p-field">
-            <label for="age">Возраст ребенка</label>
             <p-input-number
               id="age"
               v-model="newRequest.age"
-              showButtons
-              buttonLayout="horizontal"
               :max="25"
               :min="5"
+              placeholder="Возраст ребенка"
             />
           </div>
           <div class="p-field">
-            <label for="class">В каком классе ребенок?</label>
             <p-dropdown
               id="class"
               v-model="newRequest.class"
               :options="classes"
               optionLabel="label"
               optionValue="value"
+              placeholder="В каком классе ребенок?"
             />
           </div>
         </div>
-      </div>
-    </div>
+
+        <div class="save-container" @click="addRequest">
+          <div class="spooky"></div>
+          <div class="border"></div>
+          <button class="button save-button">
+            Записаться
+            <i class="pi pi-plus" />
+          </button>
+        </div>
+      </template>
+    </MolbertDesign>
   </section>
 </template>
 
@@ -72,10 +86,11 @@ import PInputMask from 'primevue/inputmask'
 import PInputNumber from 'primevue/inputnumber'
 import { useRequest } from '@/composables/useRequest'
 import { useCourse } from '@/composables/useCourse'
+import MolbertDesign from '@/components/design/MolbertDesign.vue'
 
 import { classes } from '@/logics'
 
-const { newRequest } = useRequest()
+const { newRequest, addRequest } = useRequest()
 const { courseList } = useCourse()
 </script>
 
@@ -85,84 +100,131 @@ const { courseList } = useCourse()
   background-position: center;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 100vh;
+  height: 105vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-image: url('');
 
-  .molbert {
+  .paper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 600px;
-    width: 600px;
-    padding: 0 20px;
-    margin: 0 auto;
-    background-color: #fdf7c0;
-    position: relative;
+    z-index: 10;
 
-    .bottom-center {
-      position: absolute;
-      width: 120%;
-      bottom: -3%;
-      left: -10%;
-      height: 50px;
-      background-position: center;
-      background-size: cover;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    .header {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
     }
 
-    .right-down {
-      position: absolute;
-      width: 50px;
-      height: 140%;
-      bottom: -30%;
-      left: 10%;
-      transform: rotate(10deg);
-      background-position: center;
-      background-size: cover;
-      z-index: -1;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    .text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    .left-down {
-      position: absolute;
-      width: 50px;
-      height: 140%;
-      bottom: -30%;
-      right: 10%;
-      transform: rotate(-10deg);
-      background-position: center;
-      background-size: cover;
-      z-index: -1;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    }
-
-    .wood {
-      background: url('@/assets/wood.jpg');
-      filter: contrast(1.2);
-    }
-
-    .paper {
+    .p-fluid {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 10px;
+      width: 100%;
 
-      .header {
-        font-family: 'Oswald', sans-serif;
-        font-size: 24px;
-      }
-
-      .text {
-        font-family: 'Oswald', sans-serif;
-        font-size: 16px;
-        text-align: center;
-        margin-bottom: 20px;
+      .p-field {
+        font-family: 'Times New Roman', Times, serif;
+        width: 100%;
       }
     }
+
+    .save-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      margin-top: 3%;
+
+      .border {
+        width: 10%;
+        background-color: #ffe993;
+        height: 30px;
+        border: 2px solid black;
+        border-right: none;
+      }
+
+      .spooky {
+        position: relative;
+        width: 15%;
+        height: 38px;
+        background-color: black;
+        border-radius: 50%;
+        border-top-left-radius: 120%;
+        border-bottom-left-radius: 120%;
+        margin-right: -10px;
+      }
+
+      .save-button {
+        font-size: calc(10px + 0.625vw);
+        font-family:
+          Franklin Gothic Medium,
+          Arial Narrow,
+          Arial,
+          sans-serif;
+        text-align: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 75%;
+        background-color: #fcaa51;
+        border-top-right-radius: 45%;
+        border-bottom-right-radius: 45%;
+        height: 30px;
+
+        .pi-plus {
+          font-size: calc(8.33333px + 0.52083vw);
+          text-align: center;
+          cursor: pointer;
+          width: -moz-fit-content;
+          width: fit-content;
+          margin-top: 3px;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    :deep(.p-inputtext) {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid black;
+      border-radius: 0px;
+      width: 100%;
+
+      :focus {
+        border: none;
+        outline: none;
+      }
+    }
+
+    :deep(.p-dropdown) {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid black;
+      border-radius: 0px;
+      width: 100%;
+    }
+
+    :deep(.p-dropdown .p-inputtext) {
+      border: none;
+    }
   }
+}
+
+:deep(.p-dropdown-panel .p-dropdown-items .p-dropdown-item) {
+  background-color: bisque !important;
 }
 </style>

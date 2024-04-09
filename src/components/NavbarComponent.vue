@@ -27,7 +27,7 @@ const { user, googleLogout, googleRegister } = useUser()
 
 <style lang="scss" scoped>
 .navbar {
-  position: fixed;
+  position: absolute;
   z-index: 1000;
   top: 0;
   width: 100vw;

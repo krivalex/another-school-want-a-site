@@ -8,7 +8,7 @@ export const cardsEvents: CardDescription[] = [
       'https://img.freepik.com/premium-vector/school-building-design-vector-illustrator_24640-49040.jpg',
     color: '#e575f9',
     position: {
-      left: '20%',
+      left: '10%',
       top: '10%',
       rotate: '10deg'
     }
@@ -20,7 +20,7 @@ export const cardsEvents: CardDescription[] = [
       'https://u7.uidownload.com/vector/805/290/vector-healthy-food-illustration-vectors-06-eps.jpg',
     color: '#a996cc',
     position: {
-      left: '20%',
+      left: '15%',
       top: '50%'
     }
   },
@@ -42,9 +42,9 @@ export const cardsEvents: CardDescription[] = [
       'https://www.fao.org/fileadmin/templates/medium/images/cover/medium_6_990e7343afc299284f29b14a428de93c.jpg',
     color: '#4CAF50',
     position: {
-      left: '60%',
+      left: '70%',
       top: '50%',
-      rotate: '-10deg'
+      rotate: '10deg'
     }
   },
   {
@@ -54,7 +54,7 @@ export const cardsEvents: CardDescription[] = [
       'https://img.freepik.com/premium-vector/life-is-life-creative-lettering-for-design-and-creative-design-vector-design_786748-3111.jpg',
     color: '#00BCD4',
     position: {
-      left: '45%',
+      left: '35%',
       top: '10%'
     }
   },
@@ -66,8 +66,8 @@ export const cardsEvents: CardDescription[] = [
       'https://img.freepik.com/free-vector/futuristic-classroom-little-children-study-with-high-tech-equipment-smart-spaces-school-ai-education-learning-management-system-concept_335657-812.jpg',
     color: '#F44336',
     position: {
-      left: '40%',
-      top: '55%',
+      left: '43%',
+      top: '52%',
       rotate: '5deg'
     }
   }

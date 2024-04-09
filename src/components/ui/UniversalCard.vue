@@ -4,7 +4,7 @@
     class="card"
     :style="`top: ${card.position.top}; left: ${card.position.left}; background-color: ${card.color}; transform: rotate(${card.position.rotate});`"
   >
-    <img class="pin" src="@/assets/pin.png" alt="" />
+    <img class="pin" src="@/components/design/design-assets/pin.png" alt="" />
     <div class="card-header">
       <h3>{{ card.header }}</h3>
       <div class="card-image">
@@ -17,15 +17,10 @@
 
 <script setup lang="ts">
 import type { CardDescription } from '@/interfaces'
-// import { ref } from 'vue'
-// import { useDraggable } from '@vueuse/core'
 
 defineProps<{
   card: CardDescription
 }>()
-
-// const el = ref<HTMLElement | null>(null)
-// const { x, y } = useDraggable(el)
 </script>
 
 <style scoped lang="scss">

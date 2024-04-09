@@ -1,16 +1,21 @@
 <template>
   <section class="about-school">
-    <span class="desc-text">Карта школы</span>
-    <div class="sticker-panel">
-      <template v-for="event in cardsEvents" :key="event.header">
-        <UniversalCard :card="event" />
+    <!-- <span class="desc-text">Карта школы</span> -->
+    <BoardDesign>
+      <template #panel-content>
+        <div class="sticker-panel">
+          <template v-for="event in cardsEvents" :key="event.header">
+            <UniversalCard :card="event" />
+          </template>
+        </div>
       </template>
-    </div>
+    </BoardDesign>
   </section>
 </template>
 
 <script setup lang="ts">
 import UniversalCard from '@/components/ui/UniversalCard.vue'
+import BoardDesign from '@/components/design/BoardDesign.vue'
 import { cardsEvents } from '@/logics'
 </script>
 
@@ -24,6 +29,8 @@ import { cardsEvents } from '@/logics'
   text-align: center;
   width: 100%;
   display: block;
+  z-index: 10;
+  position: relative;
 }
 
 .sticker-panel {
@@ -38,11 +45,6 @@ import { cardsEvents } from '@/logics'
   position: relative;
   display: flex;
   align-items: center;
-  background-color: #ffffff;
   flex-direction: column;
-  background-image: url('@/assets/board.png');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 </style>
