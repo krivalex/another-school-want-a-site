@@ -5,20 +5,22 @@
 </template>
 
 <script setup lang="ts">
+import { sectionsPrettify } from '@/logics'
 import { ref } from 'vue'
 
 const currentSection = ref('')
 
 addEventListener('scroll', () => {
   const visibleSections = getVisibleSection()
-  currentSection.value = visibleSections[0]?.className
+  currentSection.value =
+    sectionsPrettify[visibleSections[0]?.className] || currentSection.value || 'О нас'
 })
 
 function getVisibleSection() {
   const sections = document.querySelectorAll('section')
   const visibleSections = Array.from(sections).filter((section) => {
     const rect = section.getBoundingClientRect()
-    return rect.top >= 0 && rect.bottom <= window.innerHeight
+    return rect.top >= -200 && rect.bottom <= window.innerHeight + 100
   })
   return visibleSections
 }

@@ -1,5 +1,15 @@
 import type { CardDescription, EducationProccess } from '@/interfaces'
 
+export const sectionsPrettify: Record<string, string> = {
+  'header-about': 'О нас',
+  'all-courses': 'Наши предметы',
+  'about-school': 'О школе',
+  'full-education-process-section': 'Как мы учим?',
+  'advantages-list': 'Процесс обучения',
+  'trial-lesson': 'Пробное занятие',
+  'all-teachers': 'Наши учителя'
+}
+
 export const cardsEvents: CardDescription[] = [
   {
     header: 'ШКОЛА ПОЛНОГО ДНЯ',

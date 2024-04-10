@@ -19,6 +19,21 @@
           <p-input-number id="description" type="text" v-model="newCourse.age.end" />
         </div>
       </div>
+      <div class="p-field">
+        <label for="teachers">Список учителей</label>
+        <p-multi-select
+          v-model="newCourse.teachers"
+          id="teachers"
+          :options="(teacherList as []) || []"
+        >
+          <template #option="{ option }">
+            <div class="teacher-option">
+              {{ option.name }}
+              {{ option.surname }}
+            </div>
+          </template>
+        </p-multi-select>
+      </div>
       <div class="p-field short-description">
         <label for="shortDescription">Короткое описание курса</label>
         <p-editor id="shortDescription" v-model="newCourse.shortDescription" />
@@ -27,9 +42,7 @@
         <label for="longDescription">Длинное описание курса</label>
         <p-editor id="longDescription" v-model="newCourse.longDescription" />
       </div>
-      <div class="p-field">
-        <label for="teachers">Список учителей</label>
-      </div>
+
       <div class="p-field">
         <form class="input__wrapper" enctype="multipart/form-data">
           <input
@@ -68,12 +81,17 @@
 </template>
 
 <script setup lang="ts">
-import { useCourse } from '@/composables/useCourse'
 import PDialog from 'primevue/dialog'
 import PEditor from 'primevue/editor'
 import PButton from 'primevue/button'
 import PInputText from 'primevue/inputtext'
 import PInputNumber from 'primevue/inputnumber'
+import PMultiSelect from 'primevue/multiselect'
+
+import { useCourse } from '@/composables/useCourse'
+import { useTeacher } from '@/composables/useTeacher'
+
+const { teacherList } = useTeacher()
 
 const {
   addContent,

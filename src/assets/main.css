@@ -7,3 +7,7 @@
 main {
   overflow-x: hidden;
 }
+
+body {
+  margin: 0
+}

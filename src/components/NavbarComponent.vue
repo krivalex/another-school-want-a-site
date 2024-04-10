@@ -30,11 +30,12 @@ const { user, googleLogout, googleRegister } = useUser()
   position: absolute;
   z-index: 1000;
   top: 0;
-  width: 100vw;
+  width: 98vw;
   height: 60px;
   color: black;
   text-align: center;
   background-color: white;
+  margin: 0 auto;
 
   .navigation-buttons {
     display: flex;

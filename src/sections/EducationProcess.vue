@@ -1,51 +1,53 @@
 <template>
-  <SchoolBoard>
-    <template #board-content>
-      <section class="full-education-process">
-        <!-- <span class="desc-text">Как мы учим?</span> -->
+  <section class="full-education-process-section">
+    <SchoolBoard>
+      <template #board-content>
+        <div class="full-education-process">
+          <!-- <span class="desc-text">Как мы учим?</span> -->
 
-        <div class="education-process">
-          <div class="row">
-            <div class="column">
-              <div class="block standart">
-                <span class="header">{{ educationProcessEvents.plan.header }} </span>
-                <span class="text">{{ educationProcessEvents.plan.desc }}</span>
+          <div class="education-process">
+            <div class="row">
+              <div class="column">
+                <div class="block standart">
+                  <span class="header">{{ educationProcessEvents.plan.header }} </span>
+                  <span class="text">{{ educationProcessEvents.plan.desc }}</span>
+                </div>
+
+                <div class="block standart">
+                  <span class="header"> {{ educationProcessEvents.diagnostic.header }} </span>
+                  <span class="text">{{ educationProcessEvents.diagnostic.desc }}</span>
+                </div>
               </div>
 
-              <div class="block standart">
-                <span class="header"> {{ educationProcessEvents.diagnostic.header }} </span>
-                <span class="text">{{ educationProcessEvents.diagnostic.desc }}</span>
+              <div class="big-vertical-block standart">
+                <span class="header"> {{ educationProcessEvents.progress.header }} </span>
+                <span class="text">{{ educationProcessEvents.progress.desc }}</span>
+              </div>
+
+              <div class="column">
+                <div class="block standart">
+                  <span class="header"> {{ educationProcessEvents.control.header }} </span>
+                  <span class="text">{{ educationProcessEvents.control.desc }}</span>
+                </div>
+
+                <div class="block standart">
+                  <span class="header"> {{ educationProcessEvents.homework.header }} </span>
+                  <span class="text">{{ educationProcessEvents.homework.desc }}</span>
+                </div>
               </div>
             </div>
 
-            <div class="big-vertical-block standart">
-              <span class="header"> {{ educationProcessEvents.progress.header }} </span>
-              <span class="text">{{ educationProcessEvents.progress.desc }}</span>
-            </div>
-
-            <div class="column">
-              <div class="block standart">
-                <span class="header"> {{ educationProcessEvents.control.header }} </span>
-                <span class="text">{{ educationProcessEvents.control.desc }}</span>
+            <div class="row-halfer">
+              <div class="big-horizontal-block standart">
+                <span class="header"> {{ educationProcessEvents.feedback.header }}</span>
+                <span class="text">{{ educationProcessEvents.feedback.desc }}</span>
               </div>
-
-              <div class="block standart">
-                <span class="header"> {{ educationProcessEvents.homework.header }} </span>
-                <span class="text">{{ educationProcessEvents.homework.desc }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="row-halfer">
-            <div class="big-horizontal-block standart">
-              <span class="header"> {{ educationProcessEvents.feedback.header }}</span>
-              <span class="text">{{ educationProcessEvents.feedback.desc }}</span>
             </div>
           </div>
         </div>
-      </section>
-    </template>
-  </SchoolBoard>
+      </template>
+    </SchoolBoard>
+  </section>
 </template>
 
 <script setup lang="ts">
