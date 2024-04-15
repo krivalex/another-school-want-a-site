@@ -1,27 +1,34 @@
 <template>
   <div class="dynamic-name">
+    <LinksComponents />
     <span class="position-text">{{ currentSection }}</span>
+    <AddRequestButton />
   </div>
 </template>
 
 <script setup lang="ts">
+import AddRequestButton from '@/components/AddRequestButton.vue'
+import LinksComponents from '@/components/design/LinksComponents.vue'
 import { sectionsPrettify } from '@/logics'
 import { ref } from 'vue'
 
-const currentSection = ref('')
+const currentSection = ref('О нас')
 
 addEventListener('scroll', () => {
   const visibleSections = getVisibleSection()
+
   currentSection.value =
     sectionsPrettify[visibleSections[0]?.className] || currentSection.value || 'О нас'
 })
 
 function getVisibleSection() {
   const sections = document.querySelectorAll('section')
+
   const visibleSections = Array.from(sections).filter((section) => {
     const rect = section.getBoundingClientRect()
     return rect.top >= -200 && rect.bottom <= window.innerHeight + 100
   })
+
   return visibleSections
 }
 </script>
@@ -31,15 +38,20 @@ function getVisibleSection() {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 500px;
-  height: 50px;
+  width: 100%;
+  height: 60px;
   text-align: center;
-  font-size: 2rem;
   z-index: 1000;
   background-color: black;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+
+  .position-text {
+    font-size: 2rem;
+    font-family: 'Oswald', sans-serif;
+    padding: 0.1rem;
+  }
 }
 </style>

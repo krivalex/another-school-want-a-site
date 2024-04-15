@@ -56,12 +56,15 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
 </script>
 
 <style scoped lang="scss">
+.full-education-process-section {
+  margin: 100px;
+}
 .full-education-process {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 }
 
 .education-process {

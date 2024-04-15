@@ -25,11 +25,19 @@
           v-model="newCourse.teachers"
           id="teachers"
           :options="(teacherList as []) || []"
+          filter
+          display="chip"
+          :filter-fields="['name', 'surname']"
         >
           <template #option="{ option }">
             <div class="teacher-option">
-              {{ option.name }}
-              {{ option.surname }}
+              <TeacherAvatar :teacher="option" />
+              <span class="label">{{ option.name }} {{ option.surname }}</span>
+            </div>
+          </template>
+          <template #chip="{ value }">
+            <div class="teacher-chips">
+              <span class="label">{{ value.name }} {{ value.surname }}</span>
             </div>
           </template>
         </p-multi-select>
@@ -88,6 +96,8 @@ import PInputText from 'primevue/inputtext'
 import PInputNumber from 'primevue/inputnumber'
 import PMultiSelect from 'primevue/multiselect'
 
+import TeacherAvatar from '@/components/ui/TeacherAvatar.vue'
+
 import { useCourse } from '@/composables/useCourse'
 import { useTeacher } from '@/composables/useTeacher'
 
@@ -119,7 +129,7 @@ function closeDialog() {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .two-at-one {
   display: flex;
   justify-content: space-between;
@@ -173,5 +183,22 @@ function closeDialog() {
     width: 150px;
     margin: 10px 10px;
   }
+}
+
+.teacher-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .label {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+}
+
+.teacher-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 </style>

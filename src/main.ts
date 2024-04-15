@@ -25,8 +25,47 @@ const firebaseConfig = {
 initializeApp(firebaseConfig)
 const app = createApp(App)
 
-app.use(PrimeVue)
 app.use(createPinia())
 app.use(router)
+
+app.use(PrimeVue, {
+  locale: {
+    dayNames: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+    dayNamesShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    monthNames: [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь'
+    ],
+    monthNamesShort: [
+      'Янв',
+      'Февр',
+      'Март',
+      'Апр',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Авг',
+      'Сент',
+      'Окт',
+      'Нояб',
+      'Дек'
+    ],
+    today: 'Сегодня',
+    firstDayOfWeek: 1,
+    dateFormat: 'dd.mm.yy',
+    clear: 'Очистить'
+  }
+})
 
 app.mount('#app')

@@ -63,7 +63,7 @@
     top: -3.5%;
     left: -2.5%;
     height: 50px;
-    z-index: 1;
+    z-index: 4;
   }
 
   .panel {
