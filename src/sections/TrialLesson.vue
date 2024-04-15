@@ -4,7 +4,7 @@
 https://www.instagram.com/flagman.talgar?igsh=NGdndHByc3IxZDRw
 
 <template>
-  <section class="trial-lesson">
+  <section class="trial-lesson" id="trial-lesson">
     <MolbertDesign>
       <template #paper-content>
         <span class="header">Оставить заявку на пробный урок</span>

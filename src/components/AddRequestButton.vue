@@ -2,7 +2,7 @@
   <div class="container">
     <p-button
       class="p-button p-button-success p-button-rounded p-button-outlined p-button-bg"
-      @click="toggleVisibleAddRequest"
+      @click="scrollToTrialSection"
       label="Записаться на пробный урок"
       icon="pi pi-plus"
     />
@@ -12,10 +12,12 @@
 
 <script setup lang="ts">
 import PButton from 'primevue/button'
-import { useRequest } from '@/composables/useRequest'
 import AddRequestModal from './modals/AddRequestModal.vue'
 
-const { toggleVisibleAddRequest } = useRequest()
+function scrollToTrialSection() {
+  const trialSection = document.getElementById('trial-lesson')
+  trialSection?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <style lang="scss" scoped>
