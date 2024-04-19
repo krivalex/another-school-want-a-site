@@ -4,7 +4,6 @@
     <CourseList />
     <AboutSchool />
     <EducationProcess />
-    <AdvantagesList />
     <TrialLesson />
     <DynamicSectionName />
   </main>
@@ -15,7 +14,6 @@ import CourseList from '@/sections/CourseList.vue'
 import AboutSchool from '@/sections/AboutSchool.vue'
 import EntrySection from '@/sections/EntrySection.vue'
 import EducationProcess from '@/sections/EducationProcess.vue'
-import AdvantagesList from '@/sections/AdvantagesList.vue'
 import TrialLesson from '@/sections/TrialLesson.vue'
 import DynamicSectionName from '@/components/DynamicSectionName.vue'
 </script>
