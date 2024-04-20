@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/valid-v-model -->
 *Информация о пробном уроке:* Стоимость: 1000 тенге. Продолжительность: 30 минут. Запись: Записаться
 на пробный урок можно по телефону или в WhatsApp. Контактная информация: Адрес: г. Талгар, мкр.
 Коктем, ул. Абая, 146/1 Телефон: +7 775 252 52 52 WhatsApp: +7 775 252 52 52 Instagram:
@@ -7,73 +8,78 @@ https://www.instagram.com/flagman.talgar?igsh=NGdndHByc3IxZDRw
   <section class="trial-lesson" id="trial-lesson">
     <MolbertDesign>
       <template #paper-content>
-        <span class="header">Оставить заявку на пробный урок</span>
-        <span class="text">Заполните форму и мы свяжемся с вами в ближайшее время</span>
+        <template v-if="!message">
+          <span class="header">Оставить заявку на пробный урок</span>
+          <span class="text">Заполните форму и мы свяжемся с вами в ближайшее время</span>
 
-        <div class="p-fluid">
-          <div class="p-field">
-            <p-input-text
-              id="parentName"
-              type="text"
-              v-model="newRequest.parentName"
-              placeholder="Ваше имя"
-            />
+          <div class="p-fluid">
+            <div class="p-field">
+              <p-input-text
+                id="parentName"
+                type="text"
+                v-model="newRequest.parentName"
+                placeholder="Ваше имя"
+              />
+            </div>
+            <div class="p-field">
+              <p-input-text
+                id="childrenName"
+                type="text"
+                v-model="newRequest.childrenName"
+                placeholder="Имя ребенка"
+              />
+            </div>
+            <div class="p-field">
+              <p-input-mask
+                id="phone"
+                v-model="newRequest.phone"
+                mask="+7 (999) 999-99-99"
+                placeholder="Номер телефона"
+              />
+            </div>
+            <div class="p-field">
+              <p-dropdown
+                id="course"
+                v-model="newRequest.course"
+                :options="courseList"
+                optionLabel="title"
+                optionValue="title"
+                placeholder="Выберите курс"
+              />
+            </div>
+            <div class="p-field">
+              <p-input-number
+                id="age"
+                v-model="newRequest.age"
+                :max="25"
+                :min="5"
+                placeholder="Возраст ребенка"
+              />
+            </div>
+            <div class="p-field">
+              <p-dropdown
+                id="class"
+                v-model="newRequest.class"
+                :options="classes"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="В каком классе ребенок?"
+              />
+            </div>
           </div>
-          <div class="p-field">
-            <p-input-text
-              id="childrenName"
-              type="text"
-              v-model="newRequest.childrenName"
-              placeholder="Имя ребенка"
-            />
-          </div>
-          <div class="p-field">
-            <p-input-mask
-              id="phone"
-              v-model="newRequest.phone"
-              mask="+7 (999) 999-99-99"
-              placeholder="Номер телефона"
-            />
-          </div>
-          <div class="p-field">
-            <p-dropdown
-              id="course"
-              v-model="newRequest.course"
-              :options="courseList"
-              optionLabel="title"
-              optionValue="title"
-              placeholder="Выберите курс"
-            />
-          </div>
-          <div class="p-field">
-            <p-input-number
-              id="age"
-              v-model="newRequest.age"
-              :max="25"
-              :min="5"
-              placeholder="Возраст ребенка"
-            />
-          </div>
-          <div class="p-field">
-            <p-dropdown
-              id="class"
-              v-model="newRequest.class"
-              :options="classes"
-              optionLabel="label"
-              optionValue="value"
-              placeholder="В каком классе ребенок?"
-            />
-          </div>
-        </div>
 
-        <div class="save-container" @click="addRequest">
-          <div class="spooky"></div>
-          <div class="border"></div>
-          <button class="button save-button">
-            Записаться
-            <i class="pi pi-plus" />
-          </button>
-        </div>
+          <div class="save-container" @click="toggleAddRequest">
+            <div class="spooky"></div>
+            <div class="border"></div>
+            <button class="button save-button">
+              Записаться
+              <i class="pi pi-plus" />
+            </button>
+          </div>
+        </template>
+        <template v-else>
+          <span class="success-message">{{ message }}</span>
+        </template>
       </template>
     </MolbertDesign>
   </section>
@@ -87,11 +93,20 @@ import PInputNumber from 'primevue/inputnumber'
 import { useRequest } from '@/composables/useRequest'
 import { useCourse } from '@/composables/useCourse'
 import MolbertDesign from '@/components/design/MolbertDesign.vue'
-
 import { classes } from '@/logics'
+import { ref } from 'vue'
+import type { Nullable } from 'primevue/ts-helpers'
 
-const { newRequest, addRequest } = useRequest()
+const message = ref('')
+
+const { newRequest, addRequest, clearRequest } = useRequest()
 const { courseList } = useCourse()
+
+async function toggleAddRequest() {
+  await addRequest()
+  clearRequest()
+  message.value = 'Мы записали вашу заявку, скоро с вами свяжемся'
+}
 </script>
 
 <style lang="scss" scoped>
@@ -226,5 +241,13 @@ const { courseList } = useCourse()
 
 :deep(.p-dropdown-panel .p-dropdown-items .p-dropdown-item) {
   background-color: bisque !important;
+}
+
+.success-message {
+  font-family: 'Oswald', sans-serif;
+  font-size: 60px;
+  text-align: center;
+  margin-top: 20px;
+  color: #fcaa51;
 }
 </style>

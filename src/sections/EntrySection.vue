@@ -7,32 +7,9 @@
       <p-button
         label="Записаться на пробный урок"
         class="go-to-trial-button"
-        @click="goToCoursePage('1')"
+        @click="scrollToTrialSection()"
       />
     </div>
-    <!-- <div class="container">
-      <div class="sales-empathy">
-        <h1>Научим вашего ребенка полезным навыкам</h1>
-        <ul>
-          <li>Развитие мелкой моторики</li>
-          <li>Развитие воображения</li>
-          <li>Развитие творческого мышления</li>
-          <li>Развитие мелкой моторики</li>
-        </ul>
-        <div class="direction-list">
-          <div v-for="direction in courseList" :key="direction.id">
-            <p-button
-              :label="direction.title"
-              @click="goToCoursePage(direction.id)"
-              icon="pi pi-forward"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="photo-empathy">
-        <img class="main-image" src="@/assets/teens.webp" />
-      </div>
-    </div> -->
   </section>
 </template>
 
@@ -41,12 +18,9 @@ import { useCourse } from '@/composables/useCourse'
 import PButton from 'primevue/button'
 import { useRouter } from 'vue-router'
 
-const { courseList } = useCourse()
-
-const router = useRouter()
-
-function goToCoursePage(id: string) {
-  router.push(`/course/${id}`)
+function scrollToTrialSection() {
+  const trialSection = document.getElementById('trial-lesson')
+  trialSection?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 

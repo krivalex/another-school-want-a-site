@@ -56,7 +56,7 @@ defineProps({
   min-height: 400px;
   margin: 0 auto;
   border-radius: 1rem;
-  margin: 20px;
+  margin: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   position: relative;
 
