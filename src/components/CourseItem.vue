@@ -130,8 +130,8 @@ defineProps({
   .course-card {
     max-width: 300px;
     min-width: 300px;
-    max-height: 475px;
-    min-height: 475px;
+    max-height: 450px;
+    min-height: 450px;
 
     .content {
       padding: 10px;
@@ -147,16 +147,18 @@ defineProps({
         gap: 0.75rem;
 
         .info {
-          flex-direction: column;
           gap: 0.5rem;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: center;
 
           :deep(.p-tag) {
-            width: 100%;
+            width: 40%;
           }
         }
 
         .p-button-sm {
-          font-size: 0.75rem;
+          font-size: 1rem;
         }
       }
     }
