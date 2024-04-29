@@ -3,8 +3,6 @@
     <SchoolBoard>
       <template #board-content>
         <div class="full-education-process">
-          <!-- <span class="desc-text">Как мы учим?</span> -->
-
           <div class="education-process">
             <div class="row">
               <div class="column">
@@ -155,5 +153,35 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
 .block {
   width: 100%;
   height: 50%;
+}
+
+@media (max-width: 768px) {
+  .full-education-process-section {
+    margin: 0;
+    margin-top: 80px;
+  }
+
+  .full-education-process {
+    height: 100%;
+
+    .education-process {
+      height: 100%;
+      padding: 0px;
+      padding-bottom: 45px;
+    }
+    .row {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .column {
+      width: 100%;
+      gap: 20px;
+    }
+
+    .big-vertical-block {
+      width: 100%;
+    }
+  }
 }
 </style>

@@ -104,4 +104,62 @@
     padding-top: 60px;
   }
 }
+
+@media (max-width: 768px) {
+  .brace {
+    width: 100%;
+    width: 92%;
+
+    .panel {
+      padding-top: 20px;
+    }
+
+    .bottom {
+      height: 30px;
+      bottom: -1.25%;
+    }
+
+    .right {
+      width: 30px;
+      top: -1.25%;
+      height: 102.5%;
+    }
+
+    .left {
+      width: 30px;
+      top: -1.25%;
+      height: 102.5%;
+    }
+
+    .top {
+      height: 30px;
+      top: -1.25%;
+    }
+
+    .shelf {
+      width: 50%;
+      height: 20px;
+      bottom: 1.5px;
+      left: 50px;
+    }
+
+    .brash {
+      display: none;
+    }
+  }
+
+  .shelf {
+    width: 50%;
+    height: 20px;
+    bottom: 20px;
+    left: 50px;
+  }
+
+  .brash {
+    width: 40%;
+    height: 80px;
+    bottom: 20%;
+    left: 20%;
+  }
+}
 </style>
