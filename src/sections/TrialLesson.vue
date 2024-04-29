@@ -1,9 +1,3 @@
-<!-- eslint-disable vue/valid-v-model -->
-*Информация о пробном уроке:* Стоимость: 1000 тенге. Продолжительность: 30 минут. Запись: Записаться
-на пробный урок можно по телефону или в WhatsApp. Контактная информация: Адрес: г. Талгар, мкр.
-Коктем, ул. Абая, 146/1 Телефон: +7 775 252 52 52 WhatsApp: +7 775 252 52 52 Instagram:
-https://www.instagram.com/flagman.talgar?igsh=NGdndHByc3IxZDRw
-
 <template>
   <section class="trial-lesson" id="trial-lesson">
     <MolbertDesign>
@@ -95,7 +89,6 @@ import { useCourse } from '@/composables/useCourse'
 import MolbertDesign from '@/components/design/MolbertDesign.vue'
 import { classes } from '@/logics'
 import { ref } from 'vue'
-import type { Nullable } from 'primevue/ts-helpers'
 
 const message = ref('')
 
@@ -249,5 +242,33 @@ async function toggleAddRequest() {
   text-align: center;
   margin-top: 20px;
   color: #fcaa51;
+}
+
+@media (max-width: 768px) {
+  .trial-lesson {
+    height: 110vh;
+
+    .paper {
+      .header {
+        text-align: center;
+        font-size: 36px;
+        line-height: 1.2;
+      }
+
+      .text {
+        font-size: 16px;
+      }
+
+      .p-fluid {
+        .p-field {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .save-button {
+    font-size: 20px !important;
+  }
 }
 </style>

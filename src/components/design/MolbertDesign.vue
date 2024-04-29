@@ -72,4 +72,40 @@
     padding: 0 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .molbert {
+    height: 650px;
+    width: 90vw;
+
+    .paper {
+      .header {
+        font-size: 24px;
+        text-align: center !important;
+      }
+    }
+
+    .bottom-center {
+      height: 30px;
+      width: 110%;
+      left: -5%;
+    }
+
+    .right-down {
+      height: 125%;
+      bottom: -15%;
+      left: 20%;
+      width: 30px;
+      transform: rotate(7deg);
+    }
+
+    .left-down {
+      height: 125%;
+      bottom: -15%;
+      right: 20%;
+      width: 30px;
+      transform: rotate(-7deg);
+    }
+  }
+}
 </style>

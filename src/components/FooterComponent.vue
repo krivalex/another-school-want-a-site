@@ -12,8 +12,8 @@
 .footer {
   position: relative;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   background-color: #f5f5f5;
   color: black;
   text-align: center;

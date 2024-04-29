@@ -76,7 +76,13 @@ function scrollToTrialSection() {
 @media screen and (max-width: 768px) {
   .header-about {
     height: 30vh;
+
     .header {
+      margin-top: 3rem;
+      padding-top: 10rem;
+      padding-bottom: 3rem;
+      margin-bottom: 4rem;
+
       .sales-text {
         font-size: 1.8rem;
         line-height: 40px;
