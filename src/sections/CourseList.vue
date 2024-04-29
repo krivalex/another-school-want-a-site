@@ -87,4 +87,9 @@ const responsiveOptions = ref([
 :deep(.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button) {
   background-color: #000;
 }
+
+@media (max-width: 768px) {
+  .all-courses {
+  }
+}
 </style>

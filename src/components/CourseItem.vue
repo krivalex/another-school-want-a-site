@@ -125,4 +125,37 @@ defineProps({
     }
   }
 }
+
+@media (max-width: 768px) {
+  .course-card {
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 450px;
+    min-height: 450px;
+
+    .content {
+      padding: 10px;
+
+      .course-name {
+        font-size: 2rem;
+      }
+
+      .course-info {
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 0.5rem;
+
+        .info {
+          flex-direction: column;
+          gap: 0.75rem;
+
+          :deep(.p-tag) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
