@@ -111,8 +111,19 @@ const { user, googleLogout, googleRegister } = useUser()
 }
 
 @media (max-width: 768px) {
-  .navbar-brand {
-    font-size: 0.7rem;
+  .navbar {
+    height: 50px;
+
+    .container {
+      padding: 0.2rem 0.7rem;
+      justify-content: space-around;
+    }
+
+    .navbar-brand {
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
   }
 }
 </style>

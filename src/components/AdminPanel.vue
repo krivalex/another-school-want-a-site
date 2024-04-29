@@ -73,4 +73,16 @@ const redirectToRequest = () => {
   font-size: 1rem;
   border-radius: 0.5rem;
 }
+
+@media screen and (max-width: 768px) {
+  .adds-button {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .adds-button .p-button {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.7rem;
+  }
+}
 </style>

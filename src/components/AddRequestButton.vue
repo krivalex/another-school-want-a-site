@@ -32,4 +32,10 @@ function scrollToTrialSection() {
     font-size: 0.9rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: none;
+  }
+}
 </style>

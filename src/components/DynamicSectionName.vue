@@ -54,4 +54,11 @@ function getVisibleSection() {
     padding: 0.1rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .dynamic-name {
+    flex-direction: column-reverse;
+    height: 100px;
+  }
+}
 </style>

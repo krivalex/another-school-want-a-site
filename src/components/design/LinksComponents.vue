@@ -102,4 +102,26 @@ const { redirectToWhatsapp, redirectToPhone, redirectToMap, redirectToInstagram 
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 5px;
+
+    .social {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-block-start: 0.2rem;
+      margin-block-end: 0.6rem;
+
+      .social-item {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+      }
+    }
+  }
+}
 </style>

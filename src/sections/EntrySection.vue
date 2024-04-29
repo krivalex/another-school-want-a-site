@@ -10,29 +10,6 @@
         @click="goToCoursePage('1')"
       />
     </div>
-    <!-- <div class="container">
-      <div class="sales-empathy">
-        <h1>Научим вашего ребенка полезным навыкам</h1>
-        <ul>
-          <li>Развитие мелкой моторики</li>
-          <li>Развитие воображения</li>
-          <li>Развитие творческого мышления</li>
-          <li>Развитие мелкой моторики</li>
-        </ul>
-        <div class="direction-list">
-          <div v-for="direction in courseList" :key="direction.id">
-            <p-button
-              :label="direction.title"
-              @click="goToCoursePage(direction.id)"
-              icon="pi pi-forward"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="photo-empathy">
-        <img class="main-image" src="@/assets/teens.webp" />
-      </div>
-    </div> -->
   </section>
 </template>
 
@@ -97,85 +74,19 @@ function goToCoursePage(id: string) {
       text-align: center;
     }
   }
-
-  .container {
-    width: 100%;
-    max-width: 1400px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 40px;
-    color: black;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-
-    .sales-empathy {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 1.5rem;
-
-      h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        line-height: 1;
-        margin-bottom: 0px;
-      }
-
-      ul {
-        list-style: none;
-        padding-inline-start: 20px;
-
-        li {
-          font-size: 20px;
-          font-weight: 400;
-          margin-bottom: 0.5rem;
-        }
-      }
-    }
-
-    .direction-list {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    .photo-empathy {
-      width: 50%;
-      position: relative;
-    }
-
-    .photo-empathy .main-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .photo-empathy svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    .absolute-price {
-      position: absolute;
-      top: 200px;
-      left: 120px;
-      width: 240px;
-      z-index: 100;
-      transform: rotate(-15deg);
-    }
-  }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
+  .header-about {
+    height: 30vh;
+    .header {
+      .sales-text {
+        font-size: 2rem;
+        line-height: 40px;
+      }
+    }
+  }
+
   .container {
     padding: 5px;
   }
