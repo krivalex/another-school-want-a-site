@@ -68,4 +68,29 @@ defineProps<{
     }
   }
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 250px;
+    height: 280px;
+    position: static;
+    margin: 20px 0;
+
+    .card-header {
+      h3 {
+        font-size: 18px;
+      }
+
+      .card-image {
+        img {
+          height: 120px;
+        }
+      }
+
+      .card-buy {
+        font-size: 16px;
+      }
+    }
+  }
+}
 </style>

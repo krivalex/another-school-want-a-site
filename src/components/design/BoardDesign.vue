@@ -75,4 +75,33 @@
     width: inherit;
   }
 }
+
+@media (max-width: 768px) {
+  .board {
+    height: 100%;
+    width: 92%;
+
+    .bottom {
+      height: 30px;
+      bottom: -1.5%;
+    }
+
+    .right {
+      width: 30px;
+      top: -1.5%;
+      height: 102.5%;
+    }
+
+    .left {
+      width: 30px;
+      top: -1.5%;
+      height: 102.5%;
+    }
+
+    .top {
+      height: 30px;
+      top: -1.5%;
+    }
+  }
+}
 </style>

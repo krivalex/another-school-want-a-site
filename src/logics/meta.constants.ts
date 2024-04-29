@@ -31,7 +31,8 @@ export const cardsEvents: CardDescription[] = [
     color: '#a996cc',
     position: {
       left: '15%',
-      top: '50%'
+      top: '50%',
+      rotate: '1deg'
     }
   },
   {
@@ -65,7 +66,8 @@ export const cardsEvents: CardDescription[] = [
     color: '#00BCD4',
     position: {
       left: '35%',
-      top: '10%'
+      top: '10%',
+      rotate: '-1deg'
     }
   },
   {

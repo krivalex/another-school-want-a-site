@@ -1,6 +1,5 @@
 <template>
   <section class="about-school">
-    <!-- <span class="desc-text">Карта школы</span> -->
     <BoardDesign>
       <template #panel-content>
         <div class="sticker-panel">
@@ -40,11 +39,18 @@ import { cardsEvents } from '@/logics'
   margin: 0 auto;
   padding-top: 50px;
   padding-bottom: 50px;
-  height: 95vh;
+  height: 100%;
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .sticker-panel {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 </style>

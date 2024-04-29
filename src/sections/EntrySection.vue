@@ -78,8 +78,9 @@ function scrollToTrialSection() {
     height: 30vh;
     .header {
       .sales-text {
-        font-size: 2rem;
+        font-size: 1.8rem;
         line-height: 40px;
+        padding: 0 1rem;
       }
     }
   }
