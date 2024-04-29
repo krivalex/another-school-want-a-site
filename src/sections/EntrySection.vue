@@ -7,7 +7,7 @@
       <p-button
         label="Записаться на пробный урок"
         class="go-to-trial-button"
-        @click="goToCoursePage('1')"
+        @click="scrollToTrialSection()"
       />
     </div>
   </section>
@@ -18,12 +18,9 @@ import { useCourse } from '@/composables/useCourse'
 import PButton from 'primevue/button'
 import { useRouter } from 'vue-router'
 
-const { courseList } = useCourse()
-
-const router = useRouter()
-
-function goToCoursePage(id: string) {
-  router.push(`/course/${id}`)
+function scrollToTrialSection() {
+  const trialSection = document.getElementById('trial-lesson')
+  trialSection?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 

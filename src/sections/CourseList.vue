@@ -1,18 +1,23 @@
 <template>
   <section class="all-courses">
-    <p-carousel
-      :value="courseList"
-      :numVisible="3"
-      :numScroll="1"
-      circular
-      :autoplayInterval="10000"
-      :showNavigators="false"
-      :responsiveOptions="responsiveOptions"
-    >
-      <template #item="slotProps">
-        <course-item :item="slotProps.data" />
-      </template>
-    </p-carousel>
+    <template v-if="loading.courseList">
+      <LoadingSpinner />
+    </template>
+    <template v-else>
+      <p-carousel
+        :value="courseList"
+        circular
+        :autoplayInterval="10000"
+        :showNavigators="false"
+        :numVisible="3"
+        :numScroll="1"
+        :responsiveOptions="responsiveOptions"
+      >
+        <template #item="slotProps">
+          <course-item :item="slotProps.data" />
+        </template>
+      </p-carousel>
+    </template>
   </section>
 </template>
 
@@ -21,27 +26,26 @@ import { useCourse } from '@/composables/useCourse'
 import { ref } from 'vue'
 import CourseItem from '@/components/CourseItem.vue'
 import PCarousel from 'primevue/carousel'
+import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
 
-const { courseList } = useCourse()
+const { courseList, loading } = useCourse()
+
+// 540px - 1
+// 1620px + 540 = 2160px - 2
 
 const responsiveOptions = ref([
   {
-    breakpoint: '1400px',
-    numVisible: 4,
-    numScroll: 1
-  },
-  {
-    breakpoint: '1199px',
+    breakpoint: '2000px',
     numVisible: 3,
     numScroll: 1
   },
   {
-    breakpoint: '767px',
-    numVisible: 4,
+    breakpoint: '1600px',
+    numVisible: 2,
     numScroll: 1
   },
   {
-    breakpoint: '575px',
+    breakpoint: '1200px',
     numVisible: 1,
     numScroll: 1
   }

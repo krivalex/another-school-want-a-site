@@ -25,7 +25,7 @@ export const initNewRequest: Request = {
   parentName: '',
   childrenName: '',
   phone: '',
-  age: '',
+  age: '' as any,
   class: '',
   course: '',
   status: 'created'

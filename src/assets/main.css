@@ -5,10 +5,15 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: #000000 #ffffff;
+  scrollbar-width: thin;
 }
+
+
 
 main {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {

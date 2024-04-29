@@ -1,26 +1,31 @@
 <template>
   <section class="course-view">
-    <div class="block">
-      <div class="course-info">
-        <div class="course-header">
-          <img :src="course?.image" :alt="course?.title" />
-          <div class="course-title">
-            <h1>{{ course?.title }}</h1>
+    <template v-if="!loading.course">
+      <div class="block">
+        <div class="course-info">
+          <div class="course-header">
+            <img :src="course?.image" :alt="course?.title" />
+            <div class="course-title">
+              <h1>{{ course?.title }}</h1>
+            </div>
           </div>
-        </div>
-        <div class="course-body-absolute">
-          <h2>{{ course?.duration }} дней</h2>
-          <div class="course-age">
-            <p>{{ course?.age.start }}</p>
-            <span>-</span>
-            <p>{{ course?.age.end }}</p>
-            <span>лет</span>
+          <div class="course-body-absolute">
+            <h2>{{ course?.duration }} дней</h2>
+            <div class="course-age">
+              <p>{{ course?.age.start }}</p>
+              <span>-</span>
+              <p>{{ course?.age.end }}</p>
+              <span>лет</span>
+            </div>
           </div>
-        </div>
 
-        <div class="html-description" v-html="course?.longDescription"></div>
+          <div class="html-description" v-html="course?.longDescription"></div>
+        </div>
       </div>
-    </div>
+    </template>
+    <template v-else>
+      <LoadingSpinner />
+    </template>
   </section>
 </template>
 
@@ -28,9 +33,10 @@
 import { useRoute } from 'vue-router'
 import { useCourse } from '@/composables/useCourse'
 import { onMounted } from 'vue'
+import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
 
 const route = useRoute()
-const { getContentById, course } = useCourse()
+const { getContentById, course, loading } = useCourse()
 
 onMounted(async () => {
   await getContentById(route.params.id as string)
