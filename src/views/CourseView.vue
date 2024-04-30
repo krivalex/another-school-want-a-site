@@ -143,7 +143,7 @@ onMounted(async () => {
   }
 
   .tag-element {
-    font-size: 1rem !important;
+    font-size: 0.7rem !important;
   }
 }
 </style>
