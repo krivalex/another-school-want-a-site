@@ -8,29 +8,29 @@
               <div class="column">
                 <div class="block standart">
                   <span class="header">{{ educationProcessEvents.plan.header }} </span>
-                  <span class="text">{{ educationProcessEvents.plan.desc }}</span>
+                  <span v-html="educationProcessEvents.plan.desc" class="text" />
                 </div>
 
                 <div class="block standart">
                   <span class="header"> {{ educationProcessEvents.diagnostic.header }} </span>
-                  <span class="text">{{ educationProcessEvents.diagnostic.desc }}</span>
+                  <span v-html="educationProcessEvents.diagnostic.desc" class="text" />
                 </div>
               </div>
 
               <div class="big-vertical-block standart">
                 <span class="header"> {{ educationProcessEvents.progress.header }} </span>
-                <span class="text">{{ educationProcessEvents.progress.desc }}</span>
+                <span v-html="educationProcessEvents.progress.desc" class="text" />
               </div>
 
               <div class="column">
                 <div class="block standart">
                   <span class="header"> {{ educationProcessEvents.control.header }} </span>
-                  <span class="text">{{ educationProcessEvents.control.desc }}</span>
+                  <span v-html="educationProcessEvents.control.desc" class="text" />
                 </div>
 
                 <div class="block standart">
                   <span class="header"> {{ educationProcessEvents.homework.header }} </span>
-                  <span class="text">{{ educationProcessEvents.homework.desc }}</span>
+                  <span v-html="educationProcessEvents.homework.desc" class="text" />
                 </div>
               </div>
             </div>
@@ -38,7 +38,7 @@
             <div class="row-halfer">
               <div class="big-horizontal-block standart">
                 <span class="header"> {{ educationProcessEvents.feedback.header }}</span>
-                <span class="text">{{ educationProcessEvents.feedback.desc }}</span>
+                <span v-html="educationProcessEvents.feedback.desc" class="text" />
               </div>
             </div>
           </div>
@@ -138,6 +138,11 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
 
 .text {
   font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
 .big-vertical-block {

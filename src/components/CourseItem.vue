@@ -128,8 +128,8 @@ defineProps({
 
 @media (max-width: 768px) {
   .course-card {
-    max-width: 300px;
-    min-width: 300px;
+    max-width: 330px;
+    min-width: 330px;
     max-height: 450px;
     min-height: 450px;
 

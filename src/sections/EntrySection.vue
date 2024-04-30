@@ -75,7 +75,7 @@ function scrollToTrialSection() {
 
 @media screen and (max-width: 768px) {
   .header-about {
-    height: 30vh;
+    height: 40vh;
 
     .header {
       margin-top: 3rem;

@@ -55,12 +55,12 @@ const responsiveOptions = ref([
 <style scoped lang="scss">
 .all-courses {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   background-color: #ffffff;
   max-width: 90vw;
   margin: 0 auto;
+  align-items: center;
 
   .desc-text {
     font-family: 'Oswald', sans-serif;
@@ -78,7 +78,7 @@ const responsiveOptions = ref([
 :deep(.p-carousel) {
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 0.3rem;
   margin-top: 40px;
 }
 
@@ -90,5 +90,11 @@ const responsiveOptions = ref([
 
 :deep(.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button) {
   background-color: #000;
+}
+
+:deep(.p-carousel-item) {
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
 }
 </style>
