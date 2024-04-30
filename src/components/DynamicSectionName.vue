@@ -18,11 +18,15 @@ addEventListener('scroll', () => {
   const visibleSections = getVisibleSection()
 
   currentSection.value =
-    sectionsPrettify[visibleSections[0]?.className] || currentSection.value || 'О нас'
+    sectionsPrettify[visibleSections[0]?.className] ||
+    visibleSections[0]?.id ||
+    currentSection.value
 })
 
 function getVisibleSection() {
   const sections = document.querySelectorAll('section')
+
+  if (sections.length === 1) return sections
 
   const visibleSections = Array.from(sections).filter((section) => {
     const rect = section.getBoundingClientRect()

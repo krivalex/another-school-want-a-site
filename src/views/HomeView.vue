@@ -5,7 +5,6 @@
     <AboutSchool />
     <EducationProcess />
     <TrialLesson />
-    <DynamicSectionName />
   </main>
 </template>
 
@@ -15,7 +14,6 @@ import AboutSchool from '@/sections/AboutSchool.vue'
 import EntrySection from '@/sections/EntrySection.vue'
 import EducationProcess from '@/sections/EducationProcess.vue'
 import TrialLesson from '@/sections/TrialLesson.vue'
-import DynamicSectionName from '@/components/DynamicSectionName.vue'
 </script>
 
 <style lang="scss" scoped></style>

@@ -30,7 +30,7 @@ const { user, googleLogout, googleRegister } = useUser()
   position: absolute;
   z-index: 1000;
   top: 0;
-  width: 98vw;
+  width: 100%;
   height: 60px;
   color: black;
   text-align: center;
