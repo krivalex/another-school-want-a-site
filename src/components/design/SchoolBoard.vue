@@ -163,7 +163,7 @@
   }
 }
 
-@media screen and (max-width: 1550px) {
+@media screen and (max-width: 1550px) and (min-width: 1000px) {
   .brace {
     .shelf {
       bottom: 30px;

@@ -160,7 +160,7 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
   height: 50%;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .full-education-process-section {
     margin: 0;
     margin-top: 80px;
@@ -190,7 +190,7 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
   }
 }
 
-@media (max-width: 1550px) {
+@media screen and (max-width: 1550px) and (min-width: 1000px) {
   .full-education-process {
     height: 116vh;
   }
