@@ -7,61 +7,57 @@
           <span class="text">Заполните форму и мы свяжемся с вами в ближайшее время</span>
 
           <div class="p-fluid">
-            <div class="p-field">
-              <p-input-text
-                id="parentName"
-                type="text"
-                v-model="newRequest.parentName"
-                placeholder="Ваше имя"
-              />
-            </div>
-            <div class="p-field">
-              <p-input-text
-                id="childrenName"
-                type="text"
-                v-model="newRequest.childrenName"
-                placeholder="Имя ребенка"
-              />
-            </div>
-            <div class="p-field">
-              <p-input-mask
-                id="phone"
-                v-model="newRequest.phone"
-                mask="+7 (999) 999-99-99"
-                placeholder="Номер телефона"
-              />
-            </div>
-            <div class="p-field">
-              <p-dropdown
-                id="course"
-                v-model="newRequest.course"
-                :options="courseList"
-                optionLabel="title"
-                optionValue="title"
-                :show-clear="true"
-                placeholder="Выберите курс"
-              />
-            </div>
-            <div class="p-field">
-              <p-input-number
-                id="age"
-                v-model="newRequest.age"
-                :max="25"
-                :min="5"
-                placeholder="Возраст ребенка"
-              />
-            </div>
-            <div class="p-field">
-              <p-dropdown
-                id="class"
-                v-model="newRequest.class"
-                :options="classes"
-                optionLabel="label"
-                optionValue="value"
-                placeholder="В каком классе ребенок?"
-                :show-clear="true"
-              />
-            </div>
+            <template v-for="field in Object.keys(types)" :key="field">
+              <div class="p-field">
+                <v-field v-slot="{ handleChange, value, errorMessage }" :name="field">
+                  <template v-if="types[field] === 'input'">
+                    <p-input-text
+                      :model-value="value"
+                      :id="values[schema[field]]"
+                      type="text"
+                      :placeholder="localizition[field]"
+                      :class="[errorMessage ? 'p-invalid' : '']"
+                      @update:model-value="handleChange"
+                    />
+                  </template>
+                  <template v-else-if="types[field] === 'mask'">
+                    <p-input-mask
+                      :model-value="value"
+                      :id="values[schema[field]]"
+                      mask="+7 (999) 999-99-99"
+                      :placeholder="localizition[field]"
+                      :class="[errorMessage ? 'p-invalid' : '']"
+                      @update:model-value="handleChange"
+                    />
+                  </template>
+                  <template v-else-if="types[field] === 'dropdown'">
+                    <p-dropdown
+                      :model-value="value"
+                      :id="values[schema[field]]"
+                      :options="field === 'course' ? courseList : classes"
+                      :optionLabel="field === 'course' ? 'title' : 'label'"
+                      :optionValue="field === 'course' ? 'title' : 'value'"
+                      :show-clear="true"
+                      :placeholder="localizition[field]"
+                      :class="[errorMessage ? 'p-invalid' : '']"
+                      @update:model-value="handleChange"
+                    />
+                  </template>
+                  <template v-else-if="types[field] === 'number'">
+                    <p-input-number
+                      :model-value="value"
+                      :id="values[schema[field]]"
+                      :max="25"
+                      :min="5"
+                      :placeholder="localizition[field]"
+                      :class="[errorMessage ? 'p-invalid' : '']"
+                      @update:model-value="handleChange"
+                    />
+                  </template>
+                  <small class="error-message">{{ errorMessage }}</small>
+                </v-field>
+              </div>
+            </template>
           </div>
 
           <div class="save-container" @click="toggleAddRequest">
@@ -89,15 +85,31 @@ import PInputNumber from 'primevue/inputnumber'
 import { useRequest } from '@/composables/useRequest'
 import { useCourse } from '@/composables/useCourse'
 import MolbertDesign from '@/components/design/MolbertDesign.vue'
-import { classes } from '@/logics'
+import { classes, localizition, schema, types } from '@/logics'
 import { ref } from 'vue'
+import type { Request } from '@/interfaces'
+import { Field as VField, useForm } from 'vee-validate'
+
+const isDisabeld = ref(true)
+
+const { validate, values } = useForm({
+  validationSchema: schema
+})
+
+const handleValidation = async () => {
+  const valid = await validate()
+  isDisabeld.value = !valid.valid
+  return isDisabeld.value
+}
 
 const message = ref('')
-
 const { newRequest, addRequest, clearRequest } = useRequest()
 const { courseList } = useCourse()
 
 async function toggleAddRequest() {
+  if (await handleValidation()) return
+
+  newRequest.value = values.value
   await addRequest()
   clearRequest()
   message.value = 'Мы записали вашу заявку, скоро с вами свяжемся'
@@ -304,5 +316,13 @@ async function toggleAddRequest() {
   .save-button {
     font-size: 20px !important;
   }
+}
+
+.error-message {
+  width: 100%;
+  margin: 0 auto;
+  color: black;
+  font-weight: 600;
+  text-align: center;
 }
 </style>

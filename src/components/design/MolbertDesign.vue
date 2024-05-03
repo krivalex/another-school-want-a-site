@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 640px;
   width: 600px;
   margin: 0 auto;
   position: relative;
