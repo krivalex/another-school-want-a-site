@@ -38,6 +38,7 @@
                 :options="courseList"
                 optionLabel="title"
                 optionValue="title"
+                :show-clear="true"
                 placeholder="Выберите курс"
               />
             </div>
@@ -58,6 +59,7 @@
                 optionLabel="label"
                 optionValue="value"
                 placeholder="В каком классе ребенок?"
+                :show-clear="true"
               />
             </div>
           </div>
@@ -262,6 +264,38 @@ async function toggleAddRequest() {
       .p-fluid {
         .p-field {
           font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .save-button {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .trial-lesson {
+    height: 120vh;
+
+    .paper {
+      .header {
+        text-align: center;
+        font-size: 28px;
+        line-height: 1.2;
+      }
+
+      .text {
+        font-size: 12px;
+      }
+
+      .p-fluid {
+        .p-field {
+          font-size: 12px;
+
+          :deep(.p-inputtext) {
+            font-size: 12px;
+          }
         }
       }
     }

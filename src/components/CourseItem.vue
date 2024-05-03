@@ -164,4 +164,52 @@ defineProps({
     }
   }
 }
+
+@media (max-width: 400px) {
+  .course-card {
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 370px;
+    min-height: 370px;
+
+    .course-preview {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      object-position: center;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+    .content {
+      padding: 10px;
+
+      .course-name {
+        font-size: 1.2rem;
+      }
+
+      .short-desc {
+        font-size: 0.9rem;
+      }
+
+      .course-info {
+        .info {
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          flex-direction: row;
+          justify-content: center;
+          font-size: 0.9rem;
+
+          :deep(.p-tag) {
+            width: 40%;
+          }
+        }
+
+        .p-button-sm {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
 </style>

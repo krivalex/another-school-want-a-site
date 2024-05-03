@@ -61,6 +61,8 @@ const responsiveOptions = ref([
   max-width: 90vw;
   margin: 0 auto;
   align-items: center;
+  min-height: 400px;
+  position: relative;
 
   .desc-text {
     font-family: 'Oswald', sans-serif;
