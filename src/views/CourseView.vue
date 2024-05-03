@@ -69,7 +69,7 @@ onMounted(async () => {
       position: relative;
 
       img {
-        height: 400px;
+        height: 500px;
         width: 100vw;
         background-color: #f0f0f0;
         overflow: hidden;
