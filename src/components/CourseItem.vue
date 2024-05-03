@@ -212,4 +212,22 @@ defineProps({
     }
   }
 }
+
+@media screen and (max-width: 1200px) and (min-width: 850px) {
+  .course-card {
+    max-width: 650px;
+    min-width: 650px;
+    max-height: 400px;
+    min-height: 400px;
+  }
+}
+
+@media screen and (max-width: 1752px) and (min-width: 1512px) {
+  .course-card {
+    max-width: 650px;
+    min-width: 650px;
+    max-height: 400px;
+    min-height: 400px;
+  }
+}
 </style>

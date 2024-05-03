@@ -93,4 +93,27 @@ defineProps<{
     }
   }
 }
+
+@media (max-width: 1550px) {
+  .card {
+    width: 260px;
+    height: 270px;
+
+    .card-header {
+      h3 {
+        font-size: 16px;
+      }
+
+      .card-image {
+        img {
+          height: 100px;
+        }
+      }
+
+      .card-buy {
+        font-size: 14px;
+      }
+    }
+  }
+}
 </style>

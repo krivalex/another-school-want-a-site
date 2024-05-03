@@ -96,7 +96,7 @@
   .panel {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
     width: inherit;
@@ -105,7 +105,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .brace {
     width: 100%;
     width: 92%;
@@ -160,6 +160,24 @@
     height: 80px;
     bottom: 20%;
     left: 20%;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .brace {
+    .shelf {
+      bottom: 30px;
+      left: 60px;
+      width: 40%;
+      height: 30px;
+    }
+
+    .brash {
+      bottom: 45%;
+      left: 40%;
+      width: 20%;
+      height: 100px;
+    }
   }
 }
 </style>

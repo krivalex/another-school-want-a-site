@@ -65,7 +65,7 @@ const { user, googleLogout, googleRegister } = useUser()
     align-items: center;
     width: 100%;
     height: inherit;
-    max-width: 1440px;
+    max-width: 1550px;
     margin: 0 auto;
   }
 
@@ -117,6 +117,23 @@ const { user, googleLogout, googleRegister } = useUser()
     .container {
       padding: 0.2rem 0.7rem;
       justify-content: space-around;
+    }
+
+    .navbar-brand {
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1550px) {
+  .navbar {
+    height: 50px;
+
+    .container {
+      padding: 0.2rem 3rem;
+      justify-content: space-between;
     }
 
     .navbar-brand {

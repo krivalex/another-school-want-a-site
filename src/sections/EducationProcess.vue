@@ -62,7 +62,7 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
   background-position: center;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 90vh;
+  height: 105vh;
 }
 
 .education-process {
@@ -152,7 +152,7 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
 
 .big-horizontal-block {
   width: 100%;
-  height: 100%;
+  height: 150%;
 }
 
 .block {
@@ -187,6 +187,25 @@ import SchoolBoard from '@/components/design/SchoolBoard.vue'
     .big-vertical-block {
       width: 100%;
     }
+  }
+}
+
+@media (max-width: 1550px) {
+  .full-education-process {
+    height: 116vh;
+  }
+
+  .education-process {
+    padding: 0 10px;
+    height: 90vh;
+  }
+
+  .text {
+    font-size: 15px;
+  }
+
+  .big-horizontal-block {
+    height: 150%;
   }
 }
 </style>

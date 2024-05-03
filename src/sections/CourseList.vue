@@ -30,9 +30,6 @@ import LoadingSpinner from '@/components/ui/LoadingSpinner.vue'
 
 const { courseList, loading } = useCourse()
 
-// 540px - 1
-// 1620px + 540 = 2160px - 2
-
 const responsiveOptions = ref([
   {
     breakpoint: '2000px',
@@ -40,7 +37,7 @@ const responsiveOptions = ref([
     numScroll: 1
   },
   {
-    breakpoint: '1600px',
+    breakpoint: '1752px',
     numVisible: 2,
     numScroll: 1
   },
