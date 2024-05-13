@@ -41,11 +41,10 @@ export const useUser = () => {
 
     if (result === 'new user') {
       await addDoc(collection(db, yourDatabase), userToObject.value)
-      addToLocalStorage()
     } else {
       await getFromMainDatabase()
-      addToLocalStorage()
     }
+    addToLocalStorage()
     router.push('/')
   }
 
